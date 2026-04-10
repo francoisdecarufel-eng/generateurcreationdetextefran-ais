@@ -118,6 +118,15 @@
           { id: 'Autre', label: 'Autre style', desc: 'Préciser un style personnalisé.' }
         ];
 
+        const FORMATS_QUESTIONS = [
+          { id: 'Type1', label: 'Type 1 — Développement', desc: '4 lignes continues (Réaction/Appréciation).' },
+          { id: 'Type2', label: 'Type 2 — Réponse courte', desc: '1 seule ligne (Repérage/Inférence).' },
+          { id: 'Type3', label: 'Type 3 — Choix multiples', desc: '4 choix (A, B, C, D) sans puces.' },
+          { id: 'Type4', label: 'Type 4 — Ordre des événements', desc: 'Cases à cocher (☐) pour la chronologie.' },
+          { id: 'Type5', label: 'Type 5 — Relier des éléments', desc: 'Deux colonnes séparées par des underscores.' },
+          { id: 'Type6', label: 'Type 6 — Énumérer', desc: 'Tirets suivis de lignes continues.' }
+        ];
+
         const TABS = [
           { id: 1, title: "1. Niveau", icon: Settings },
           { id: 2, title: "2. Rôle", icon: Type },
@@ -138,7 +147,7 @@
           vocabConcret: false, inference: '', figuresStyle: [], theme: '', themeAutre: '', style: '',
           styleAutre: '', morale: false, implicite: false, motsImposes: '', activerTemps: false,
           tempsChoisis: [], activerQuestionnaire: false, qReperage: 0, qInference: 0,
-          qRappel: 0, qReaction: 0, qAppreciation: 0, qInterpretation: 0, images: '', format: ''
+          qRappel: 0, qReaction: 0, qAppreciation: 0, qInterpretation: 0, qTypes: [], images: '', format: ''
         };
 
         function App() {
@@ -188,7 +197,7 @@
             }
 
             if (formData.typeAdaptation === 'aucune') {
-              p += `- Adaptation : Aucune adaptation spécifique de progression PFEQ (Texte standard fluide et cohérent selon le niveau ciblé).\n`;
+              p += `- Adaptation : Aucune adaptation spécifique (Texte standard fluide et cohérent selon le niveau ciblé).\n`;
             } else if (formData.typeAdaptation === 'personnalisees') {
               if (formData.echelon) {
                 const echelonsData = ECHELONS_PFEQ.find(e => e.id === formData.echelon);
@@ -290,10 +299,100 @@
               if (formData.qReaction > 0) p += `- ${formData.qReaction} Question(s) de Réaction.\n`;
               if (formData.qAppreciation > 0) p += `- ${formData.qAppreciation} Question(s) d'Appréciation.\n`;
               if (formData.qInterpretation > 0) p += `- ${formData.qInterpretation} Question(s) d'Interprétation.\n`;
-              
-              p += `\nCONSIGNE ESTHÉTIQUE POUR LE QUESTIONNAIRE :\n`;
-              p += `Présente le questionnaire de manière très esthétique et prête à imprimer.\n`;
-              p += `Sous chaque question, tu DOIS ajouter visuellement des lignes vides pour que l'élève puisse écrire sa réponse (ex: utilise des lignes de soulignement comme _________________________ sur 3 ou 4 lignes).\n`;
+
+              if (formData.qTypes.length > 0) {
+                p += `\nSECTION — PARAMÈTRES DES TYPES DE QUESTIONS\n`;
+                p += `L’enseignant a choisi les types de questions à générer.\n`;
+                p += `Tu dois STRICTEMENT respecter la structure associée à chaque type.\n\n`;
+                p += `IMPORTANT :\n`;
+                p += `Partout où des lignes de réponse sont nécessaires, appliquer OBLIGATOIREMENT la règle suivante :\n\n`;
+                p += `FABRICATION TECHNIQUE DES LIGNES — TRÈS IMPORTANT\n\n`;
+                p += `Chaque ligne de réponse doit être générée comme une suite CONTINUE d’underscores sans aucun espace.\n`;
+                p += `Règles techniques obligatoires :\n`;
+                p += `- Ne jamais insérer d’espace avant, après ou entre les underscores\n`;
+                p += `- Ne jamais couper la ligne en deux\n`;
+                p += `- Ne jamais utiliser de retour à la ligne au milieu\n`;
+                p += `- Ne jamais utiliser de tiret, trait ou caractère similaire\n`;
+                p += `- Produire chaque ligne comme UNE SEULE CHAÎNE DE CARACTÈRES\n`;
+                p += `Longueur fixe obligatoire : exactement 70 underscores.\n\n`;
+                p += `Exemple :\n`;
+                p += `______________________________________________________________________\n\n`;
+
+                if (formData.qTypes.includes('Type1')) {
+                  p += `------------------------------------------------------------\n`;
+                  p += `TYPE 1 — QUESTION À DÉVELOPPEMENT (RÉACTION / APPRÉCIATION)\n\n`;
+                  p += `Objectif :\nInviter l’élève à exprimer une opinion, une réaction ou une appréciation.\n\n`;
+                  p += `Structure obligatoire :\n- Question ouverte\n- 4 lignes de réponse EXACTEMENT\n\n`;
+                  p += `Exemple de structure attendue :\n\n1. Question…\n\n`;
+                  p += `______________________________________________________________________\n`;
+                  p += `______________________________________________________________________\n`;
+                  p += `______________________________________________________________________\n`;
+                  p += `______________________________________________________________________\n\n`;
+                }
+                if (formData.qTypes.includes('Type2')) {
+                  p += `------------------------------------------------------------\n`;
+                  p += `TYPE 2 — QUESTION À RÉPONSE COURTE\n\n`;
+                  p += `Objectif :\nRepérer une information explicite ou faire une inférence simple.\n\n`;
+                  p += `Structure obligatoire :\n- Question directe\n- 1 seule ligne de réponse\n\n`;
+                  p += `Exemple :\n\n2. Question…\n\n`;
+                  p += `______________________________________________________________________\n\n`;
+                }
+                if (formData.qTypes.includes('Type3')) {
+                  p += `------------------------------------------------------------\n`;
+                  p += `TYPE 3 — QUESTION À CHOIX MULTIPLES\n\n`;
+                  p += `Objectif :\nVérifier la compréhension globale ou détaillée.\n\n`;
+                  p += `Structure obligatoire :\n- Une question\n- 4 choix identifiés par lettres MAJUSCULES\n- Aucun symbole ou puce automatique\n\n`;
+                  p += `Format obligatoire :\n\n3. Question…\n\nA) choix\nB) choix\nC) choix\nD) choix\n\n`;
+                }
+                if (formData.qTypes.includes('Type4')) {
+                  p += `------------------------------------------------------------\n`;
+                  p += `TYPE 4 — REMETTRE EN ORDRE DES ÉVÉNEMENTS\n\n`;
+                  p += `Objectif :\nVérifier la compréhension de la chronologie.\n\n`;
+                  p += `Structure obligatoire :\n- Donner 4 ou 5 événements mélangés\n- Ajouter un carré vide au début de chaque ligne\n- Utiliser uniquement ce symbole : ☐\n\n`;
+                  p += `Format obligatoire :\n\n4. Replace les événements en ordre :\n\n☐ Événement…\n☐ Événement…\n☐ Événement…\n☐ Événement…\n\n`;
+                }
+                if (formData.qTypes.includes('Type5')) {
+                  p += `------------------------------------------------------------\n`;
+                  p += `TYPE 5 — RELIER DES ÉLÉMENTS\n\n`;
+                  p += `Objectif :\nAssocier des informations correspondantes.\n\n`;
+                  p += `Structure obligatoire :\n- Deux colonnes qui se font face\n- Aucun tableau\n\n`;
+                  p += `Format obligatoire :\n\n5. Relie les éléments correspondants :\n`;
+                  p += `Exemple \n`;
+                  p += `Mot gauche 1•                                         • Mot droite 1\n`;
+                  p += `Mot gauche 2•                                         • Mot droite 2\n`;
+                  p += `Mot gauche 3•                                         • Mot droite 3\n`;
+                  p += `Mot gauche 4•                                         • Mot droite 4\n\n`;
+                }
+                if (formData.qTypes.includes('Type6')) {
+                  p += `------------------------------------------------------------\n`;
+                  p += `TYPE 6 — ÉNUMÉRER 2 OU 3 ÉLÉMENTS\n\n`;
+                  p += `Objectif :\nDemander de nommer plusieurs éléments tirés du texte.\n\n`;
+                  p += `Structure obligatoire :\n- Écrire la consigne\n- Mettre un tiret au début de chaque ligne de réponse\n- Ajouter une ligne d’underscores après chaque tiret\n\n`;
+                  p += `Format obligatoire :\n\n6. Nomme deux éléments…\n\n`;
+                  p += `- ______________________________________________________________________\n`;
+                  p += `- ______________________________________________________________________\n`;
+                  p += `- ______________________________________________________________________\n\n`;
+                }
+
+                p += `------------------------------------------------------------\n`;
+                p += `RÈGLE FINALE :\nLorsque l’enseignant choisit les types de questions, générer le questionnaire en respectant EXACTEMENT ces structures.\nAucune variation de format n’est permise.\n`;
+              } else {
+                p += `\nCONSIGNE ESTHÉTIQUE POUR LE QUESTIONNAIRE :\n`;
+                p += `Présente le questionnaire de manière très esthétique et prête à imprimer.\n`;
+                p += `Sous chaque question, tu DOIS ajouter visuellement 3 ou 4 lignes pour que l'élève puisse écrire sa réponse en appliquant LA RÈGLE SUIVANTE :\n`;
+                p += `\nFABRICATION TECHNIQUE DES LIGNES — TRÈS IMPORTANT\n`;
+                p += `Chaque ligne de réponse doit être générée comme une suite CONTINUE d’underscores sans aucun espace.\n\n`;
+                p += `Règles techniques obligatoires :\n`;
+                p += `- Ne jamais insérer d’espace avant, après ou entre les underscores\n`;
+                p += `- Ne jamais couper la ligne en deux\n`;
+                p += `- Ne jamais utiliser de retour à la ligne au milieu\n`;
+                p += `- Ne jamais utiliser de tiret, trait ou caractère similaire\n`;
+                p += `- Produire chaque ligne comme UNE SEULE CHAÎNE DE CARACTÈRES\n\n`;
+                p += `Longueur fixe obligatoire :\n`;
+                p += `Chaque ligne doit contenir exactement 70 underscores.\n\n`;
+                p += `Exemple EXACT à reproduire :\n`;
+                p += `______________________________________________________________________\n`;
+              }
               p += `\nINCLURE LE CORRIGÉ DÉTAILLÉ (séparé du questionnaire) à la toute fin de cette section.\n`;
             }
 
@@ -302,7 +401,7 @@
               p += `\n====================================================\n`;
               p += `▶ SECTION 4 : DESCRIPTION D'IMAGES (TRÈS DÉTAILLÉE)\n`;
               p += `====================================================\n`;
-              p += `CONSIGNE STRICTE : Tu dois créer entre 3 et 6 descriptions précises d'images en français illustrant le texte.\n`;
+              p += `CONSIGNE STRICTE : Tu devons créer entre 3 et 6 descriptions précises d'images en français illustrant le texte.\n`;
               p += `Le cerveau de l'IA décide de la séquence à décrire de manière détaillée selon les actions principales ou selon la situation du texte.\n\n`;
               p += `Pour CHAQUE description générée, tu dois obligatoirement inclure une description détaillée de :\n`;
               p += `- Le lieu exact\n`;
@@ -638,8 +737,7 @@
                                       Génération de Glossaire
                                     </h3>
                                     <p className="text-slate-500 mb-6 text-sm relative z-10">
-                                      Création automatique d'une section d'explication de mots à la fin du texte. <br />
-                                      <strong className="text-blue-700">Note :</strong> Si le glossaire est activé, l'IA l'intégrera automatiquement avec une définition claire.
+                                      Création automatique d'une section d'explication de mots à la fin du texte.
                                     </p>
                                     <CheckboxCard 
                                       label={<span className="text-blue-700">Surligner en bleu les mots complexes à intégrer dans le texte.</span>}
@@ -864,37 +962,65 @@
                           />
 
                           {formData.activerQuestionnaire && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-8 bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-100 rounded-3xl shadow-inner animate-fade-in">
-                              {[
-                                { key: 'qReperage', label: 'Repérage', desc: 'Trouver l\'info écrite clairement.' },
-                                { key: 'qInference', label: 'Inférence', desc: 'Déduire une info entre les lignes.' },
-                                { key: 'qRappel', label: 'Rappel (Ordre)', desc: 'Reconstruire l\'ordre chronologique.' },
-                                { key: 'qReaction', label: 'Réaction', desc: 'Donner une opinion personnelle.' },
-                                { key: 'qAppreciation', label: 'Appréciation', desc: 'Porter un jugement critique justifié.' },
-                                { key: 'qInterpretation', label: 'Interprétation', desc: 'Saisir le sens profond, les valeurs.' }
-                              ].map((q, index) => (
-                                <div key={q.key} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border-2 border-emerald-100 hover:border-emerald-300 transition-colors shadow-sm">
-                                  <div className="flex-1 min-w-0 pr-2">
-                                    <div className="font-black text-slate-800 text-lg flex items-start sm:items-center gap-2 break-words">
-                                      <span className="text-emerald-500 font-mono text-xl shrink-0">{index + 1}.</span> 
-                                      <span>{q.label}</span>
+                            <div className="animate-fade-in space-y-8">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-8 bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-100 rounded-3xl shadow-inner">
+                                {[
+                                  { key: 'qReperage', label: 'Repérage', desc: 'Trouver l\'info écrite clairement.' },
+                                  { key: 'qInference', label: 'Inférence', desc: 'Déduire une info entre les lignes.' },
+                                  { key: 'qRappel', label: 'Rappel (Ordre)', desc: 'Reconstruire l\'ordre chronologique.' },
+                                  { key: 'qReaction', label: 'Réaction', desc: 'Donner une opinion personnelle.' },
+                                  { key: 'qAppreciation', label: 'Appréciation', desc: 'Porter un jugement critique justifié.' },
+                                  { key: 'qInterpretation', label: 'Interprétation', desc: 'Saisir le sens profond, les valeurs.' }
+                                ].map((q, index) => (
+                                  <div key={q.key} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border-2 border-emerald-100 hover:border-emerald-300 transition-colors shadow-sm">
+                                    <div className="flex-1 min-w-0 pr-2">
+                                      <div className="font-black text-slate-800 text-lg flex items-start sm:items-center gap-2 break-words">
+                                        <span className="text-emerald-500 font-mono text-xl shrink-0">{index + 1}.</span> 
+                                        <span>{q.label}</span>
+                                      </div>
+                                      <div className="text-sm text-slate-500 font-medium line-clamp-2">{q.desc}</div>
                                     </div>
-                                    <div className="text-sm text-slate-500 font-medium line-clamp-2">{q.desc}</div>
+                                    <div className="flex items-center gap-3 shrink-0 bg-slate-50 p-2 rounded-xl border border-slate-100">
+                                      <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Qté.</label>
+                                      <input 
+                                        type="number" 
+                                        min="0" 
+                                        max="15" 
+                                        className="w-16 p-2 text-xl text-center font-bold text-emerald-700 bg-white border-2 border-slate-200 rounded-lg focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none" 
+                                        value={formData[q.key] === 0 ? '' : formData[q.key]} 
+                                        placeholder="0"
+                                        onChange={(e) => handleChange(q.key, e.target.value === '' ? 0 : Number(e.target.value))} 
+                                      />
+                                    </div>
                                   </div>
-                                  <div className="flex items-center gap-3 shrink-0 bg-slate-50 p-2 rounded-xl border border-slate-100">
-                                    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Qté.</label>
-                                    <input 
-                                      type="number" 
-                                      min="0" 
-                                      max="15" 
-                                      className="w-16 p-2 text-xl text-center font-bold text-emerald-700 bg-white border-2 border-slate-200 rounded-lg focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none" 
-                                      value={formData[q.key] === 0 ? '' : formData[q.key]} 
-                                      placeholder="0"
-                                      onChange={(e) => handleChange(q.key, e.target.value === '' ? 0 : Number(e.target.value))} 
-                                    />
-                                  </div>
+                                ))}
+                              </div>
+
+                              <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                                <h3 className="text-xl font-black text-slate-800 mb-6 flex items-center gap-3">
+                                  <span className="bg-indigo-600 text-white w-6 h-6 rounded-full flex justify-center items-center text-xs">📝</span> 
+                                  Formats des questions (Optionnel / Au choix)
+                                </h3>
+                                <p className="text-slate-500 mb-6">Sélectionnez les structures exactes des questions que vous souhaitez générer.</p>
+                                
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  {FORMATS_QUESTIONS.map(format => {
+                                    const isChecked = formData.qTypes && formData.qTypes.includes(format.id);
+                                    return (
+                                      <label key={format.id} className={`flex items-start gap-4 p-5 cursor-pointer rounded-2xl border-2 transition-all duration-300 ${isChecked ? 'bg-indigo-50 border-indigo-500 shadow-md -translate-y-1' : 'bg-white border-slate-200 hover:border-indigo-300 hover:shadow-sm hover:-translate-y-1'}`}>
+                                        <input type="checkbox" className="hidden" checked={isChecked} onChange={(e) => handleCheckboxArray('qTypes', format.id, e.target.checked)} />
+                                        <div className={`mt-1 w-6 h-6 flex-shrink-0 rounded border-2 flex items-center justify-center transition-colors ${isChecked ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300'}`}>
+                                          {isChecked && <Check className="w-4 h-4 text-white" strokeWidth={3} />}
+                                        </div>
+                                        <div className="flex-1">
+                                          <span className={`font-bold block text-lg transition-colors ${isChecked ? 'text-indigo-900' : 'text-slate-800'}`}>{format.label}</span>
+                                          <span className="text-sm text-slate-500 mt-2 block leading-relaxed">{format.desc}</span>
+                                        </div>
+                                      </label>
+                                    );
+                                  })}
                                 </div>
-                              ))}
+                              </div>
                             </div>
                           )}
                         </div>
