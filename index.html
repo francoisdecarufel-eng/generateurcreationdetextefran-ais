@@ -65,6 +65,14 @@
           { id: 10, cycles: ['Cycle 3'], label: "Échelon 10 : (Cycle 3)", description: "L’élève lit une grande diversité de textes courants et littéraires, de niveaux de difficulté variables, et présentés sur différents supports médiatiques. Lorsqu’il accomplit des tâches liées à diverses intentions de lecture dans différents contextes et disciplines scolaires, il dégage les éléments d’information tant explicites qu’implicites contenus dans un ou plusieurs textes en ayant recours à des stratégies variées et pertinentes. Il réagit aux différents aspects des textes et ses réactions témoignent de ses champs d’intérêt, de son interprétation personnelle, de ses connaissances, de ses expériences personnelles ou scolaires ainsi que de ses autres lectures." }
         ];
 
+        const PALIERS_ILSS = [
+          { id: 1, label: "Palier 1", description: "L’élève comprend des textes courants ou littéraires, illustrés et dont le sujet est familier. Ces textes à structure prévisible sont constitués de mots ou de phrases simples liés à son environnement immédiat. Il reconnaît globalement certains mots appris en classe et lit des mots composés de syllabes simples. Il associe des mots à des images et réagit de façon non verbale au texte.\n* Avec l’aide de l’enseignant, l’élève utilise des stratégies enseignées." },
+          { id: 2, label: "Palier 2", description: "L’élève comprend des textes courants ou littéraires, illustrés et dont le sujet est familier. Ces textes à structure généralement prévisible, sont constitués de quelques phrases simples et d’un vocabulaire de base. Il reconnaît la plupart des mots appris en classe et lit des mots composés de syllabes simples et parfois complexes. Il repère des informations explicites et exprime sa réaction au texte en faisant quelques liens avec ses connaissances et ses expériences.\n* Avec l’aide de l’enseignant, l’élève utilise des stratégies enseignées et les ressources suggérées." },
+          { id: 3, label: "Palier 3", description: "L’élève comprend des textes courants ou littéraires, illustrés et dont le sujet est généralement familier. Ces textes sont constitués de quelques paragraphes comportant des phrases simples et un vocabulaire courant. Il lit par groupe de mots, avec ou sans hésitation. Il identifie le sujet traité et se sert du contexte pour comprendre le sens de nouveaux mots. Il sélectionne des informations explicites et relève parfois l’idée principale du texte. Il effectue des liens avec ses connaissances et ses expériences et se sert de faits ou d’exemples du texte pour appuyer sa réaction.\n* L’élève utilise des stratégies suggérées. Avec l’aide de l’enseignant, il répond à des questions sur sa démarche de lecture." },
+          { id: 4, label: "Palier 4", description: "L’élève comprend des textes courants ou littéraires dont le sujet est plus ou moins familier. Ces textes sont constitués de plusieurs paragraphes comportant des phrases complexes et un vocabulaire spécifique des disciplines scolaires. Il dégage l’idée principale ainsi que certaines informations essentielles et se sert d’indices linguistiques pour déduire le sens du texte. Il regroupe des informations explicites et relève les principaux éléments qui illustrent la progression dans le texte. Il exprime sa réaction au texte en faisant des liens avec différents textes lus, vus ou entendus.\n* L’élève utilise des stratégies et différentes ressources. Avec l’aide de l’enseignant, il décrit sa démarche de lecture et identifie ses forces et ses faiblesses." },
+          { id: 5, label: "Palier 5", description: "L’élève comprend des textes courants ou littéraires dont le sujet est peu ou pas familier. Ces textes sont constitués de plusieurs paragraphes comportant des phrases variées et un vocabulaire étendu. Il distingue l’idée principale des idées secondaires et peut résumer le texte en présentant les idées de façon logique ou chronologique. Il se sert de ses connaissances antérieures et du contenu du texte pour dégager le sens de certaines informations implicites." }
+        ];
+
         const FIGURES_STYLE = [
           { id: 'Comparaison', label: 'Comparaison', desc: 'Comparer deux éléments avec un mot de liaison comme « comme » ou « tel ». Exemple : « Il est fort comme un lion »' },
           { id: 'Métaphore', label: 'Métaphore', desc: 'Comparer deux éléments sans mot de liaison, en disant qu’un élément est l’autre. Exemple : « Cet homme est un lion »' },
@@ -142,7 +150,7 @@
 
         const INITIAL_FORM_STATE = {
           niveau: '', role: '', typeTexte: '', sousType: '', typeAdaptation: '',
-          echelon: '', region: '', regionAutre: '', motsComplexes: false, motsClarifier: '',
+          echelon: '', palierIlss: '', region: '', regionAutre: '', motsComplexes: false, motsClarifier: '',
           longueurActive: false, nbMots: '', phrasesCourtes: false, vocabSimple: false,
           vocabConcret: false, inference: '', figuresStyle: [], theme: '', themeAutre: '', style: '',
           styleAutre: '', morale: false, implicite: false, motsImposes: '', activerTemps: false,
@@ -206,9 +214,17 @@
                 p += `Voici ce que le PFEQ mentionne dans le cadre de la progression des apprentissages au niveau primaire au QUÉBEC pour cet échelon :\n`;
                 p += `"${echelonsData.label}\n${echelonsData.description}"\n\n`;
               }
+            } else if (formData.typeAdaptation === 'ilss') {
+              if (formData.palierIlss) {
+                const palierData = PALIERS_ILSS.find(p => p.id === formData.palierIlss);
+                p += `\nCONSIGNE STRICTE D'ADAPTATION (PALIERS ILSS) :\n`;
+                p += `Le texte généré doit respecter à la lettre le palier d'intégration linguistique, scolaire et sociale (ILSS) sélectionné pour les élèves.\n`;
+                p += `Voici la description officielle du palier à respecter STRICTEMENT :\n`;
+                p += `"${palierData.label}\n${palierData.description}"\n\n`;
+              }
             }
 
-            if (formData.typeAdaptation === 'personnalisees' || formData.typeAdaptation === 'aucune') {
+            if (formData.typeAdaptation === 'personnalisees' || formData.typeAdaptation === 'aucune' || formData.typeAdaptation === 'ilss') {
               if (formData.longueurActive && formData.nbMots) p += `- Longueur du texte : Environ ${formData.nbMots} mots.\n`;
               if (formData.phrasesCourtes) p += `- Syntaxe : Phrases plus courtes et simplifiées.\n`;
               if (formData.vocabSimple) p += `- Vocabulaire : Simple et accessible.\n`;
@@ -274,13 +290,13 @@
             }
 
             // SECTION 2
-            if ((formData.typeAdaptation === 'personnalisees' || formData.typeAdaptation === 'aucune') && formData.motsComplexes) {
+            if ((formData.typeAdaptation === 'personnalisees' || formData.typeAdaptation === 'aucune' || formData.typeAdaptation === 'ilss') && formData.motsComplexes) {
               p += `\n====================================================\n`;
               p += `▶ SECTION 2 : GLOSSAIRE (OBLIGATOIRE)\n`;
               p += `====================================================\n`;
               p += `Consigne stricte : Tu dois surligner en bleu les mots complexes dans la Section 1 (Texte). Ensuite, ajoute un glossaire simple et clair à la fin du texte dans cette Section 2.\n`;
               p += `Les mots surlignés apparaîtront ici avec une explication claire, simple et avec des mots concrets et faciles à comprendre.\n`;
-              p += `\n🧠 CONSIGNE D'EXPERT PÉDAGOGIQUE : En tant qu'expert de la pédagogie au primaire au Québec, tu dois cibler des mots difficiles (riches) spécifiquement pour le cycle sélectionné (${formData.niveau || 'le niveau ciblé'}).\n`;
+              p += `\n🧠 CONSIGNE D'EXPERT PÉDAGOGIQUE : En tant qu'expert de la pédagogie au primaire au Québec, tu dois cibler des mots difficiles (riches) spécifiquement pour le niveau sélectionné.\n`;
               p += `Si un mot est difficile ou riche, il faut impérativement l'intégrer dans le glossaire. Sélectionne entre 2 et 8 mots de ce type dans ton texte, surligne-les en bleu, et ajoute-les au glossaire.\n`;
               p += `Ces mots complexes que tu as identifiés s'ajouteront aux mots spécifiques que l'enseignant a potentiellement demandés ci-dessous.\n`;
 
@@ -401,7 +417,7 @@
               p += `\n====================================================\n`;
               p += `▶ SECTION 4 : DESCRIPTION D'IMAGES (TRÈS DÉTAILLÉE)\n`;
               p += `====================================================\n`;
-              p += `CONSIGNE STRICTE : Tu devons créer entre 3 et 6 descriptions précises d'images en français illustrant le texte.\n`;
+              p += `CONSIGNE STRICTE : Tu dois créer entre 3 et 6 descriptions précises d'images en français illustrant le texte.\n`;
               p += `Le cerveau de l'IA décide de la séquence à décrire de manière détaillée selon les actions principales ou selon la situation du texte.\n\n`;
               p += `Pour CHAQUE description générée, tu dois obligatoirement inclure une description détaillée de :\n`;
               p += `- Le lieu exact\n`;
@@ -627,12 +643,13 @@
 
                       {activeTab === 4 && (
                         <div className="animate-fade-in space-y-10">
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <RadioCard label="Texte standard" description="Génère un texte fluide et naturel selon le niveau général ciblé (aucune contrainte stricte d'échelon)." value="aucune" current={formData.typeAdaptation} onChange={(v) => handleChange('typeAdaptation', v)} />
                             <RadioCard label="Texte adapté (Progression PFEQ)" description="Ouvrir le panneau d'options expertes pour calibrer le texte exactement selon les échelons et les règles du PFEQ." value="personnalisees" current={formData.typeAdaptation} onChange={(v) => handleChange('typeAdaptation', v)} />
+                            <RadioCard label="Texte adapté selon les paliers ILSS" description="Calibrer le texte pour les élèves en apprentissage du français (ILSS)." value="ilss" current={formData.typeAdaptation} onChange={(v) => handleChange('typeAdaptation', v)} />
                           </div>
 
-                          {(formData.typeAdaptation === 'personnalisees' || formData.typeAdaptation === 'aucune') && (
+                          {(formData.typeAdaptation === 'personnalisees' || formData.typeAdaptation === 'aucune' || formData.typeAdaptation === 'ilss') && (
                             <div className="space-y-12 animate-fade-in">
                               
                               {/* Échelons PFEQ */}
@@ -654,6 +671,31 @@
                                         value={echelon.id} 
                                         current={formData.echelon} 
                                         onChange={(v) => handleChange('echelon', v)} 
+                                      />
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* Paliers ILSS */}
+                              {formData.typeAdaptation === 'ilss' && (
+                                <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm animate-fade-in-down">
+                                  <div className="mb-6 border-b border-slate-100 pb-4">
+                                    <h3 className="text-2xl font-black text-slate-800 flex items-center gap-3">
+                                      <span className="bg-indigo-600 text-white w-8 h-8 rounded-full flex justify-center items-center text-sm">1</span> 
+                                      Paliers ILSS (OBLIGATOIRE)
+                                    </h3>
+                                    <p className="text-slate-500 mt-2 text-base">Sélectionnez la description officielle correspondant au palier de vos élèves.</p>
+                                  </div>
+                                  <div className="grid grid-cols-1 gap-4">
+                                    {PALIERS_ILSS.map(palier => (
+                                      <RadioCard 
+                                        key={palier.id}
+                                        label={palier.label} 
+                                        description={palier.description}
+                                        value={palier.id} 
+                                        current={formData.palierIlss} 
+                                        onChange={(v) => handleChange('palierIlss', v)} 
                                       />
                                     ))}
                                   </div>
@@ -947,7 +989,7 @@
                               <span className="w-6 h-6 rounded-full bg-slate-600 flex items-center justify-center">1</span> 
                               Texte (Toujours généré)
                             </div>
-                            {formData.motsComplexes && (formData.typeAdaptation === 'personnalisees' || formData.typeAdaptation === 'aucune') && (
+                            {formData.motsComplexes && (formData.typeAdaptation === 'personnalisees' || formData.typeAdaptation === 'aucune' || formData.typeAdaptation === 'ilss') && (
                               <div className="flex items-center gap-3 px-4 py-2 bg-blue-600 text-white rounded-xl font-bold text-sm shadow-sm">
                                 <span className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">2</span> 
                                 Glossaire (Activé via l'onglet 4)
