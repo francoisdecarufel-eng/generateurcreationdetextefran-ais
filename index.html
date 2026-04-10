@@ -152,7 +152,7 @@
           niveau: '', role: '', typeTexte: '', sousType: '', typeAdaptation: '',
           echelon: '', palierIlss: '', region: '', regionAutre: '', motsComplexes: false, motsClarifier: '',
           longueurActive: false, nbMots: '', phrasesCourtes: false, vocabSimple: false,
-          vocabConcret: false, inference: '', figuresStyle: [], theme: '', themeAutre: '', style: '',
+          vocabConcret: false, inference: '', figuresStyle: [], theme: [], themeAutre: '', style: [],
           styleAutre: '', morale: false, implicite: false, motsImposes: '', activerTemps: false,
           tempsChoisis: [], activerQuestionnaire: false, qReperage: 0, qInference: 0,
           qRappel: 0, qReaction: 0, qAppreciation: 0, qInterpretation: 0, qTypes: [], images: '', format: ''
@@ -261,14 +261,14 @@
               }
             }
 
-            if (formData.theme) {
-              const themeFinal = formData.theme === 'Autre' ? formData.themeAutre || 'Thème libre' : formData.theme;
-              p += `- Thème : ${themeFinal}\n`;
+            if (formData.theme && formData.theme.length > 0) {
+              const themesFinal = formData.theme.map(t => t === 'Autre' ? (formData.themeAutre || 'Thème libre') : t).join(', ');
+              p += `- Thème(s) : ${themesFinal}\n`;
             }
             
-            if (formData.style) {
-              const styleFinal = formData.style === 'Autre' ? formData.styleAutre || 'Style libre' : formData.style;
-              p += `- Style exigé : ${styleFinal}\n`;
+            if (formData.style && formData.style.length > 0) {
+              const stylesFinal = formData.style.map(s => s === 'Autre' ? (formData.styleAutre || 'Style libre') : s).join(', ');
+              p += `- Style(s) exigé(s) : ${stylesFinal}\n`;
             }
 
             if (formData.morale) {
@@ -496,9 +496,10 @@
             );
           };
 
-          const CheckboxCard = ({ label, checked, onChange, description = null }) => (
+          const CheckboxCard = ({ label, checked, onChange, description = null, isSmall = false }) => (
             <label className={`
-              cursor-pointer group block border-2 p-6 rounded-2xl transition-all duration-300 ease-in-out transform relative overflow-hidden
+              cursor-pointer group block border-2 transition-all duration-300 ease-in-out transform relative overflow-hidden
+              ${isSmall ? 'p-4 rounded-xl' : 'p-6 rounded-2xl'}
               ${checked 
                 ? 'border-indigo-500 bg-indigo-50 shadow-[0_4px_20px_-5px_rgba(79,70,229,0.2)] -translate-y-1' 
                 : 'border-slate-200 bg-white hover:border-indigo-300 hover:shadow-md hover:-translate-y-1'}
@@ -517,7 +518,7 @@
                   </div>
                 </div>
                 <div className="flex-1">
-                  <span className={`font-bold text-lg transition-colors block ${checked ? 'text-indigo-900' : 'text-slate-800 group-hover:text-indigo-700'}`}>
+                  <span className={`font-bold transition-colors block ${isSmall ? 'text-base' : 'text-lg'} ${checked ? 'text-indigo-900' : 'text-slate-800 group-hover:text-indigo-700'}`}>
                     {label}
                   </span>
                   {description && <p className="mt-2 text-slate-500 text-sm leading-relaxed">{description}</p>}
@@ -841,32 +842,38 @@
                           
                           <div>
                             <h3 className="text-2xl font-black text-slate-800 mb-8 border-b border-slate-200 pb-4">
-                              Partie 1 : THÈMES (Choix unique)
+                              Partie 1 : THÈMES (Choix multiples)
                             </h3>
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                              {THEMES_LIST.map(t => (
-                                <label key={t} className={`cursor-pointer border-2 rounded-xl p-3 text-center transition-all font-bold ${formData.theme === t ? 'border-indigo-500 bg-indigo-50 text-indigo-900 scale-[1.03] shadow-md' : 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-slate-50 text-slate-700'}`}>
-                                  <input type="radio" className="hidden" checked={formData.theme === t} onChange={() => handleChange('theme', t)} />
-                                  {t}
-                                </label>
-                              ))}
+                              {THEMES_LIST.map(t => {
+                                const isChecked = formData.theme.includes(t);
+                                return (
+                                  <label key={t} className={`cursor-pointer border-2 rounded-xl p-3 text-center transition-all font-bold ${isChecked ? 'border-indigo-500 bg-indigo-50 text-indigo-900 scale-[1.03] shadow-md' : 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-slate-50 text-slate-700'}`}>
+                                    <input type="checkbox" className="hidden" checked={isChecked} onChange={(e) => handleCheckboxArray('theme', t, e.target.checked)} />
+                                    {t}
+                                  </label>
+                                );
+                              })}
                             </div>
-                            {formData.theme === 'Autre' && (
-                              <input type="text" placeholder="Précisez le thème personnalisé..." value={formData.themeAutre} onChange={(e) => handleChange('themeAutre', e.target.value)} className="w-full p-4 mt-6 border-2 border-indigo-200 rounded-xl text-lg font-bold focus:ring-4 focus:ring-indigo-100 outline-none animate-fade-in shadow-sm" />
+                            {formData.theme.includes('Autre') && (
+                              <input type="text" placeholder="Précisez le(s) thème(s) personnalisé(s)..." value={formData.themeAutre} onChange={(e) => handleChange('themeAutre', e.target.value)} className="w-full p-4 mt-6 border-2 border-indigo-200 rounded-xl text-lg font-bold focus:ring-4 focus:ring-indigo-100 outline-none animate-fade-in shadow-sm" />
                             )}
                           </div>
 
                           <div>
                             <h3 className="text-2xl font-black text-slate-800 mb-8 border-b border-slate-200 pb-4">
-                              Partie 2 : STYLES DE TEXTE (Choix unique)
+                              Partie 2 : STYLES DE TEXTE (Choix multiples)
                             </h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                              {STYLES_LIST.map(s => (
-                                <RadioCard key={s.id} label={s.label} description={s.desc} value={s.id} current={formData.style} onChange={(v) => handleChange('style', v)} isSmall />
-                              ))}
+                              {STYLES_LIST.map(s => {
+                                const isChecked = formData.style.includes(s.id);
+                                return (
+                                  <CheckboxCard key={s.id} label={s.label} description={s.desc} checked={isChecked} onChange={(c) => handleCheckboxArray('style', s.id, c)} isSmall />
+                                );
+                              })}
                             </div>
-                            {formData.style === 'Autre' && (
-                              <input type="text" placeholder="Précisez le style personnalisé..." value={formData.styleAutre} onChange={(e) => handleChange('styleAutre', e.target.value)} className="w-full p-4 mt-6 border-2 border-indigo-200 rounded-xl text-lg font-bold focus:ring-4 focus:ring-indigo-100 outline-none animate-fade-in shadow-sm" />
+                            {formData.style.includes('Autre') && (
+                              <input type="text" placeholder="Précisez le(s) style(s) personnalisé(s)..." value={formData.styleAutre} onChange={(e) => handleChange('styleAutre', e.target.value)} className="w-full p-4 mt-6 border-2 border-indigo-200 rounded-xl text-lg font-bold focus:ring-4 focus:ring-indigo-100 outline-none animate-fade-in shadow-sm" />
                             )}
                           </div>
 
