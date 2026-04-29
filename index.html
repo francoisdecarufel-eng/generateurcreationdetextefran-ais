@@ -40,6 +40,7 @@
         const Type = ({className}) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>;
         const GraduationCap = ({className}) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>;
         const Palette = ({className}) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg>;
+        const Users = ({className}) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>;
         const MessageSquare = ({className}) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>;
         const Clock = ({className}) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>;
         const ListOrdered = ({className}) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="10" y1="6" x2="21" y2="6"></line><line x1="10" y1="12" x2="21" y2="12"></line><line x1="10" y1="18" x2="21" y2="18"></line><path d="M4 6h1v4"></path><path d="M4 10h2"></path><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"></path></svg>;
@@ -54,19 +55,19 @@
 
         const ECHELONS_PFEQ = [
           { id: 1, cycles: ['Cycle 1'], label: "Échelon 1 : (cycle 1)", description: "L’élève fait semblant de lire lorsqu’il feuillette un livre. Il parvient à se le raconter intérieurement ou à le raconter à autrui en s’appuyant notamment sur les illustrations. Dans les textes qu’il aborde, il reconnaît quelques mots familiers ou déjà vus en classe. Il réussit à suivre des consignes simples comprenant surtout des mots connus. Il cherche aussi à donner du sens aux écrits qu’il rencontre autour de lui et il en parle volontiers." },
-          { id: 2, cycles: ['Cycle 1'], label: "Échelon 2 : (Cycle 1)", description: "L’élève lit des petits messages ou des textes courts, simples et illustrés constitués majoritairement de mots familiers et d’usage fréquent. Afin de construire du sens, il utilise, avec de l’aide, des stratégies de reconnaissance et d’identification de mots telles que les correspondances entre les lettres et les sons ainsi que le recours au contexte et aux illustrations. Il parvient à accomplir des tâches très simples liées à diverses intentions de lecture. Il réagit au texte dans la mesure où il est sollicité." },
+          { id: 2, cycles: ['Cycle 1'], label: "Échelon 2 : (Cycle 1)", description: "L’élève lit des petits messages ou des textes courts, simples et illustrés constitués majoritairement de mots familiers et d’usage fréquent. Afin de construire du sens, il utilise, avec de l’aide, des stratégies de reconnaissance et d’identification de mots telles que les correspondances entre les lettres et les sons ainsi que le recours au contexte et aux illustrations. Il parvient à accomplir des tâches très simples liées à diverse intentions de lecture. Il réagit au texte dans la mesure où il est sollicité." },
           { id: 3, cycles: ['Cycle 1'], label: "Échelon 3 : (Cycle 1)", description: "L’élève lit des textes courants et littéraires, simples et illustrés, dont la structure est généralement prévisible. Pour comprendre l’essentiel d’un texte, il utilise les stratégies appropriées et rappelées par l’enseignant. Lorsqu’il accomplit des tâches simples liées à diverses intentions de lecture, il dégage les informations explicites nécessaires. Quand il réagit au texte, il exprime ses réactions en ayant recours surtout au dessin ou à la parole." },
           { id: 4, cycles: ['Cycle 1', 'Cycle 2'], label: "Échelon 4 : (Fin cycle 1 / début cycle 2)", description: "L’élève lit des textes courants et littéraires généralement courts, illustrés et présentant un niveau de difficulté approprié. Afin de comprendre les textes qu’il lit, l’élève a recours aux principales stratégies apprises. Lorsqu’il accomplit des tâches liées à diverses intentions de lecture, il dégage la plupart des informations explicites contenues dans un ou plusieurs courts textes. De façon générale, il réagit spontanément aux textes et ses réactions, souvent liées à ses expériences personnelles, peuvent se manifester par le recours à la parole, au dessin, au mime, au non verbal et quelquefois à l’écrit." },
           { id: 5, cycles: ['Cycle 2'], label: "Échelon 5 : (Cycle 2)", description: "L’élève lit des textes courants et littéraires, proposant un défi approprié, généralement illustrés et présentés sur différents supports médiatiques. Il utilise la plupart des stratégies auxquelles il a été initié pour comprendre les textes. Lorsqu’il accomplit des tâches liées à diverses intentions de lecture, il dégage les éléments d’information explicites et, à l’occasion, certains éléments d’information implicites liés à ses connaissances et à ses expériences personnelles. Il réagit aux textes qu’il lit et ses réactions, orales et parfois écrites, s’appuient aussi sur ses expériences personnelles." },
           { id: 6, cycles: ['Cycle 2'], label: "Échelon 6 : (Cycle 2)", description: "L’élève lit des textes courants et littéraires, proposant un défi approprié, souvent illustrés et présentés sur différents supports médiatiques. Il utilise les différentes stratégies apprises pour mieux saisir l’information. Lorsqu’il accomplit des tâches liées à diverses intentions de lecture ou rattachées aux disciplines scolaires, il parvient à dégager des éléments d’information explicites et, parfois, quelques-uns qui sont implicites. Il réagit aux textes qu’il lit surtout en les reliant à ses expériences personnelles et parfois à d’autres textes qu’il a lus." },
-          { id: 7, cycles: ['Cycle 2', 'Cycle 3'], label: "Échelon 7 : (Fin cycle 2 / début cycle 3)", description: "L’élève lit des textes courants et littéraires qui peuvent être illustrés et présentés sur différents supports médiatiques. Dans des textes qui présentent pour lui un défi raisonnable, il fait appel à diverses stratégies, dont certaines lui permettent de mieux saisir et organiser l’information. Pour répondre à diverses intentions de lecture et pour accomplir des tâches significatives dans plusieurs disciplines scolaires, il réussit à dégager les éléments d’information explicites et parfois ceux qui sont implicites. Lorsqu’il réagit à certains aspects des textes qu’il lit, il le fait généralement de façon pertinente en les reliant à ses expériences personnelles et à d’autres textes qu’il a lus." },
+          { id: 7, cycles: ['Cycle 2', 'Cycle 3'], label: "Échelon 7 : (Fin cycle 2 / début cycle 3)", description: "L’élève lit des textes courants et littéraires qui peuvent être illustrés et présentés sur différents supports médiatiques. Dans des textes qui présentent pour lui un défi raisonnable, il fait appel à diverses stratégies, dont certaines lui permettent de mieux saisir et organiser l’information. Pour répondre à diverse intentions de lecture et pour accomplir des tâches significatives dans plusieurs disciplines scolaires, il réussit à dégager les éléments d’information explicites et parfois ceux qui sont implicites. Lorsqu’il réagit à certains aspects des textes qu’il lit, il le fait généralement de façon pertinente en les reliant à ses expériences personnelles et à d’autres textes l’il a lus." },
           { id: 8, cycles: ['Cycle 3'], label: "Échelon 8 : (cycle 3)", description: "L’élève lit une variété de textes courants et littéraires, présentés sur différents supports médiatiques et proposant un défi raisonnable. Lorsqu’il accomplit des tâches liées à diverses intentions de lecture dans différentes disciplines scolaires, il dégage avec efficacité les éléments d’information explicites et quelques éléments d’information implicites contenus dans un même texte et, à l’occasion, dans plusieurs textes, en utilisant les stratégies pertinentes. Il réagit à divers aspects des textes en les reliant à ses expériences personnelles ou scolaires et parfois à d’autres lectures." },
-          { id: 9, cycles: ['Cycle 3'], label: "Échelon 9 : (Cycle 3)", description: "L’élève lit une variété de textes courants et littéraires, présentés sur différents supports médiatiques et proposant un défi raisonnable. Lorsqu’il accomplit des tâches liées à diverses intentions de lecture dans différents contextes et disciplines scolaires, il dégage les éléments d’information explicites et implicites contenus dans plusieurs textes en utilisant efficacement des stratégies pertinentes. Il réagit à plusieurs aspects des textes et ses réactions témoignent de son interprétation personnelle, de ses connaissances, de ses expériences personnelles ou scolaires ainsi que de ses autres lectures." },
+          { id: 9, cycles: ['Cycle 3'], label: "Échelon 9 : (Cycle 3)", description: "L’élève lit une variété de textes courants et littéraires, présentés sur différents supports médiatiques et proposant un défi raisonnable. Lorsqu’il accomplit des tâches liées à diverse intentions de lecture dans différents contextes et disciplines scolaires, il dégage les éléments d’information explicites et implicites contenus dans plusieurs textes en utilisant efficacement des stratégies pertinentes. Il réagit à plusieurs aspects des textes et ses réactions témoignent de son interprétation personnelle, de ses connaissances, de ses expériences personnelles ou scolaires ainsi que de ses autres lectures." },
           { id: 10, cycles: ['Cycle 3'], label: "Échelon 10 : (Cycle 3)", description: "L’élève lit une grande diversité de textes courants et littéraires, de niveaux de difficulté variables, et présentés sur différents supports médiatiques. Lorsqu’il accomplit des tâches liées à diverses intentions de lecture dans différents contextes et disciplines scolaires, il dégage les éléments d’information tant explicites qu’implicites contenus dans un ou plusieurs textes en ayant recours à des stratégies variées et pertinentes. Il réagit aux différents aspects des textes et ses réactions témoignent de ses champs d’intérêt, de son interprétation personnelle, de ses connaissances, de ses expériences personnelles ou scolaires ainsi que de ses autres lectures." }
         ];
 
         const PALIERS_ILSS = [
-          { id: 1, label: "Palier 1", description: "L’élève comprend des textes courants ou littéraires, illustrés et dont le sujet est familier. Ces textes à structure prévisible sont constitués de mots ou de phrases simples liés à son environnement immédiat. Il reconnaît globalement certains mots appris en classe et lit des mots composés de syllabes simples. Il associe des mots à des images et réagit de façon non verbale au texte.\n* Avec l’aide de l’enseignant, l’élève utilise des stratégies enseignées." },
+          { id: 1, label: "Palier 1", description: "L’élève comprend des textes courants ou littéraires, illustrés et dont le sujet est familier. Ces textes à structure prévisible sont constitués de mots ou de phrases simples liés à son environnement immédiat. Il reconnaît globalement certains mots appris en classe et lit des mots composés de syllabes simples. Il associe des mots à images et réagit de façon non verbale au texte.\n* Avec l’aide de l’enseignant, l’élève utilise des stratégies enseignées." },
           { id: 2, label: "Palier 2", description: "L’élève comprend des textes courants ou littéraires, illustrés et dont le sujet est familier. Ces textes à structure généralement prévisible, sont constitués de quelques phrases simples et d’un vocabulaire de base. Il reconnaît la plupart des mots appris en classe et lit des mots composés de syllabes simples et parfois complexes. Il repère des informations explicites et exprime sa réaction au texte en faisant quelques liens avec ses connaissances et ses expériences.\n* Avec l’aide de l’enseignant, l’élève utilise des stratégies enseignées et les ressources suggérées." },
           { id: 3, label: "Palier 3", description: "L’élève comprend des textes courants ou littéraires, illustrés et dont le sujet est généralement familier. Ces textes sont constitués de quelques paragraphes comportant des phrases simples et un vocabulaire courant. Il lit par groupe de mots, avec ou sans hésitation. Il identifie le sujet traité et se sert du contexte pour comprendre le sens de nouveaux mots. Il sélectionne des informations explicites et relève parfois l’idée principale du texte. Il effectue des liens avec ses connaissances et ses expériences et se sert de faits ou d’exemples du texte pour appuyer sa réaction.\n* L’élève utilise des stratégies suggérées. Avec l’aide de l’enseignant, il répond à des questions sur sa démarche de lecture." },
           { id: 4, label: "Palier 4", description: "L’élève comprend des textes courants ou littéraires dont le sujet est plus ou moins familier. Ces textes sont constitués de plusieurs paragraphes comportant des phrases complexes et un vocabulaire spécifique des disciplines scolaires. Il dégage l’idée principale ainsi que certaines informations essentielles et se sert d’indices linguistiques pour déduire le sens du texte. Il regroupe des informations explicites et relève les principaux éléments qui illustrent la progression dans le texte. Il exprime sa réaction au texte en faisant des liens avec différents textes lus, vus ou entendus.\n* L’élève utilise des stratégies et différentes ressources. Avec l’aide de l’enseignant, il décrit sa démarche de lecture et identifie ses forces et ses faiblesses." },
@@ -135,17 +136,32 @@
           { id: 'Type6', label: 'Type 6 — Énumérer', desc: 'Tirets suivis de lignes continues.' }
         ];
 
+        const LIST_PHYSIQUE_NOUV = ['Enfant', 'Adolescent / adolescente', 'Adulte', 'Personne âgée', 'Petit / petite', 'Grand / grande', 'Très grand / très grande', 'Très petit / très petite', 'Mince', 'Costaud / robuste', 'Corpulence moyenne', 'Athlétique', 'Cheveux blonds', 'Cheveux bruns', 'Cheveux noirs', 'Cheveux roux', 'Cheveux blancs / gris', 'Cheveux longs', 'Cheveux courts', 'Cheveux frisés', 'Cheveux lisses', 'Porte des lunettes', 'Cicatrice visible', 'Taches de rousseur', 'Yeux bleus', 'Yeux verts', 'Yeux bruns', 'Teint pâle', 'Teint foncé', 'Particularité physique spécifique'];
+        const LIST_DEMARCHE = ['Boite légèrement en marchant', 'Marche très rapidement / pressé', 'Marche lentement / traîne les pieds', 'Tremble des mains', 'Gestes nerveux fréquents', 'Posture très droite', 'Posture voûtée', 'Boite ou a une démarche asymétrique', 'Bouge beaucoup en parlant', 'Reste très immobile'];
+        const LIST_VISAGE = ['Regard très intense', 'Regard fuyant', 'Sourire très fréquent', 'Visage très expressif', 'Visage presque toujours neutre', 'Sourcils très marqués', 'Cernes visibles sous les yeux', 'Air constamment surpris', 'Air très sérieux', 'Regard doux et rassurant'];
+        const LIST_CORP = ['Main bandée ou cicatrice à la main', 'Bras ou jambe dans un bandage', 'Porte une prothèse (main ou jambe)', 'Mains très grandes ou très petites', 'Doigts très agiles / rapides', 'Peau marquée (grains de beauté, marques visibles)', 'Tressaille facilement', 'Voix très douce ou très forte (physiquement perceptible)', 'Respiration bruyante ou marquée', 'Présence physique impressionnante'];
+        const LIST_HABILLEMENT = ['T-shirt simple', 'Chemise', 'Chemisier', 'Pull en laine', 'Manteau d’hiver', 'Veste légère', 'Hoodie / chandail à capuchon', 'Pantalon', 'Jeans', 'Short', 'Jupe', 'Robe', 'Uniforme scolaire', 'Uniforme militaire', 'Tenue de sport', 'Costume élégant', 'Tenue traditionnelle', 'Salopette', 'Bottes', 'Souliers de course', 'Sandales', 'Gants', 'Écharpe', 'Tuque / bonnet', 'Casquette', 'Chapeau', 'Armure (fantasy ou historique)', 'Cape', 'Vêtements usés / déchirés', 'Vêtements très colorés'];
+        
+        const LIST_TRAITS_EXP = ['Courageux / courageuse', 'Peureux / peureuse', 'Curieux / curieuse', 'Généreux / généreuse', 'Égoïste', 'Gentil / gentille', 'Méchant / méchante', 'Patient / patiente', 'Impulsif / impulsive', 'Responsable', 'Timide', 'Intelligent / intelligente', 'Déterminé / déterminée', 'Protecteur / protectrice', 'Leader'];
+        const LIST_TRAITS_IMP = ['Persévérant (montré par l’effort)', 'Rusé (montré par les stratégies)', 'Créatif (montré par les idées)', 'Débrouillard', 'Aventurier', 'Méfiant', 'Observateur', 'Discret', 'Empathique', 'Indépendant'];
+        const LIST_EMOTIONS_EXP = ['Heureux / heureuse', 'Triste', 'Fâché / fâchée', 'Effrayé / effrayée', 'Surpris / surprise', 'Excité / excitée', 'Inquiet / inquiète', 'Fier / fière', 'Jaloux / jalouse', 'Honteux / honteuse'];
+        const LIST_EMOTIONS_IMP = ['Soulagement', 'Nostalgie', 'Confusion', 'Émerveillement', 'Stress', 'Détermination', 'Solitude', 'Curiosité intense', 'Inconfort', 'Épuisement'];
+        const LIST_TEMPS = ['Aujourd’hui', 'Hier', 'Futur proche', 'Futur lointain', 'Préhistoire', 'Antiquité', 'Moyen Âge', 'Temps modernes', 'Années 1900', 'Années 1950', 'Années 1980', 'Hiver', 'Été', 'Automne', 'Printemps', 'Matin', 'Après-midi', 'Soir', 'Nuit', 'Sur plusieurs jours'];
+        const LIST_LIEU = ['École', 'Maison', 'Forêt', 'Ville', 'Village', 'Montagne', 'Plage', 'Île', 'Parc', 'Bibliothèque', 'Château', 'Grotte', 'Vaisseau spatial', 'Planète inconnue', 'Ferme', 'Zoo', 'Musée', 'Train', 'Bateau', 'Monde imaginaire'];
+        const LIST_AMBIANCE = ['Suspense', 'Mystère', 'Aventure', 'Fantastique', 'Science-fiction', 'Guerre', 'Amitié', 'Amour', 'Humour', 'Tristesse', 'Pauvreté', 'Survie', 'Enquête', 'Magie', 'Catastrophe', 'Voyage', 'Compétition', 'Courage', 'Danger', 'Joie'];
+
         const TABS = [
           { id: 1, title: "1. Niveau", icon: Settings },
           { id: 2, title: "2. Rôle", icon: Type },
           { id: 3, title: "3. Type", icon: BookOpen },
           { id: 4, title: "4. Adaptations", icon: GraduationCap },
           { id: 5, title: "5. Thèmes", icon: Palette },
-          { id: 6, title: "6. Vocabulaire", icon: MessageSquare },
-          { id: 7, title: "7. Temps", icon: Clock },
-          { id: 8, title: "8. Structure", icon: ListOrdered },
-          { id: 9, title: "9. Images", icon: ImageIcon },
-          { id: 10, title: "10. Format", icon: FileCode2 }
+          { id: 6, title: "6. Ambiance & Personnages", icon: Users },
+          { id: 7, title: "7. Vocabulaire", icon: MessageSquare },
+          { id: 8, title: "8. Temps", icon: Clock },
+          { id: 9, title: "9. Structure", icon: ListOrdered },
+          { id: 10, title: "10. Images", icon: ImageIcon },
+          { id: 11, title: "11. Format", icon: FileCode2 }
         ];
 
         const INITIAL_FORM_STATE = {
@@ -153,9 +169,187 @@
           echelon: '', palierIlss: '', region: '', regionAutre: '', motsComplexes: false, motsClarifier: '',
           longueurActive: false, nbMots: '', phrasesCourtes: false, vocabSimple: false,
           vocabConcret: false, inference: '', figuresStyle: [], theme: [], themeAutre: '', style: [],
-          styleAutre: '', morale: false, implicite: false, motsImposes: '', activerTemps: false,
+          styleAutre: '', morale: false, implicite: false, ideePrincipale: '',
+          
+          nomMain: '',
+          showCatPhysMain: false,
+          physiqueMain: [], physiqueMainAutre: '', physiqueMainIA: false,
+          showCatDemarcheMain: false,
+          demarcheMain: [], demarcheMainAutre: '', demarcheMainIA: false,
+          showCatVisageMain: false,
+          visageMain: [], visageMainAutre: '', visageMainIA: false,
+          showCatCorpMain: false,
+          corpMain: [], corpMainAutre: '', corpMainIA: false,
+          showCatHabitMain: false,
+          habitMain: [], habitMainAutre: '', habitMainIA: false,
+          
+          showCatTraitsMain: false,
+          activeTraitsExpMain: false, traitsExpMain: [], traitsExpMainAutre: '', traitsExpMainIA: false,
+          activeTraitsImpMain: false, traitsImpMain: [], traitsImpMainAutre: '', traitsImpMainIA: false,
+          
+          showCatEmotionsMain: false,
+          activeEmotionsExpMain: false, emotionsExpMain: [], emotionsExpMainAutre: '', emotionsExpMainIA: false,
+          activeEmotionsImpMain: false, emotionsImpMain: [], emotionsImpMainAutre: '', emotionsImpMainIA: false,
+          
+          hasSecondaires: false, nbSecondaires: 1, nomSec: '',
+          showCatPhysSec: false,
+          physiqueSec: [], physiqueSecAutre: '', physiqueSecIA: false,
+          showCatDemarcheSec: false,
+          demarcheSec: [], demarcheSecAutre: '', demarcheSecIA: false,
+          showCatVisageSec: false,
+          visageSec: [], visageSecAutre: '', visageSecIA: false,
+          showCatCorpSec: false,
+          corpSec: [], corpSecAutre: '', corpSecIA: false,
+          showCatHabitSec: false,
+          habitSec: [], habitSecAutre: '', habitSecIA: false,
+          
+          showCatTraitsSec: false,
+          activeTraitsExpSec: false, traitsExpSec: [], traitsExpSecAutre: '', traitsExpSecIA: false,
+          activeTraitsImpSec: false, traitsImpSec: [], traitsImpSecAutre: '', traitsImpSecIA: false,
+          
+          showCatEmotionsSec: false,
+          activeEmotionsExpSec: false, emotionsExpSec: [], emotionsExpSecAutre: '', emotionsExpSecIA: false,
+          activeEmotionsImpSec: false, emotionsImpSec: [], emotionsImpSecAutre: '', emotionsImpSecIA: false,
+          
+          tempsRecit: [], tempsRecitAutre: '', tempsRecitIA: false,
+          lieu: [], lieuAutre: '', lieuIA: false,
+          ambiance: [], ambianceAutre: '', ambianceIA: false,
+          
+          motsImposes: '', activerTemps: false,
           tempsChoisis: [], activerQuestionnaire: false, qReperage: 0, qInference: 0,
           qRappel: 0, qReaction: 0, qAppreciation: 0, qInterpretation: 0, qTypes: [], images: '', format: ''
+        };
+
+        // Composants partagés déplacés à l'extérieur pour éviter le re-render
+        const RadioCard = ({ label, value, current, onChange, description = null, isSmall = false }) => {
+          const isSelected = current === value;
+          return (
+            <label className={`
+              cursor-pointer group border-2 transition-all duration-300 ease-in-out transform relative overflow-hidden flex flex-col justify-center
+              ${isSmall ? 'p-4 rounded-xl' : 'p-6 rounded-2xl'} min-h-[5rem]
+              ${isSelected 
+                ? 'border-indigo-500 bg-indigo-50 shadow-[0_4px_20px_-5px_rgba(79,70,229,0.2)] -translate-y-1' 
+                : 'border-slate-200 bg-white hover:border-indigo-300 hover:shadow-md hover:-translate-y-1'}
+            `}>
+              <input 
+                type="radio" 
+                className="hidden" 
+                value={value} 
+                checked={isSelected} 
+                onChange={() => onChange(value)} 
+              />
+              {isSelected && <div className="absolute top-0 right-0 w-16 h-16 bg-indigo-100 rounded-bl-full -z-10 transition-all duration-300"></div>}
+              <div className={`flex gap-4 w-full ${description ? 'items-start' : 'items-center'}`}>
+                <div className={`${description ? 'mt-1' : ''} flex-shrink-0`}>
+                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${isSelected ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300 group-hover:border-indigo-400'}`}>
+                    {isSelected && <div className="w-2 h-2 rounded-full bg-white"></div>}
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0 break-words">
+                  <span className={`font-bold transition-colors block leading-snug ${isSmall ? 'text-base' : 'text-lg'} ${isSelected ? 'text-indigo-900' : 'text-slate-800 group-hover:text-indigo-700'}`}>
+                    {label}
+                  </span>
+                  {description && <p className="mt-2 text-slate-500 text-sm leading-relaxed">{description}</p>}
+                </div>
+              </div>
+            </label>
+          );
+        };
+
+        const CheckboxCard = ({ label, checked, onChange, description = null, isSmall = false }) => (
+          <label className={`
+            cursor-pointer group border-2 transition-all duration-300 ease-in-out transform relative overflow-hidden flex flex-col justify-center
+            ${isSmall ? 'p-4 rounded-xl' : 'p-6 rounded-2xl'} min-h-[5rem]
+            ${checked 
+              ? 'border-indigo-500 bg-indigo-50 shadow-[0_4px_20px_-5px_rgba(79,70,229,0.2)] -translate-y-1' 
+              : 'border-slate-200 bg-white hover:border-indigo-300 hover:shadow-md hover:-translate-y-1'}
+          `}>
+            <input 
+              type="checkbox" 
+              className="hidden" 
+              checked={checked} 
+              onChange={(e) => onChange(e.target.checked)} 
+            />
+            {checked && <div className="absolute top-0 right-0 w-16 h-16 bg-indigo-100 rounded-bl-full -z-10 transition-all duration-300"></div>}
+            <div className={`flex gap-4 w-full ${description ? 'items-start' : 'items-center'}`}>
+              <div className={`${description ? 'mt-1' : ''} flex-shrink-0`}>
+                <div className={`w-6 h-6 rounded border-2 flex items-center justify-center transition-colors ${checked ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300 group-hover:border-indigo-400'}`}>
+                  {checked && <Check className="w-4 h-4 text-white" strokeWidth={3} />}
+                </div>
+              </div>
+              <div className="flex-1 min-w-0 break-words">
+                <span className={`font-bold transition-colors block leading-snug ${isSmall ? 'text-base' : 'text-lg'} ${checked ? 'text-indigo-900' : 'text-slate-800 group-hover:text-indigo-700'}`}>
+                  {label}
+                </span>
+                {description && <p className="mt-2 text-slate-500 text-sm leading-relaxed">{description}</p>}
+              </div>
+            </div>
+          </label>
+        );
+
+        const ChecklistGridCards = ({ list, fieldData, fieldName, onChange }) => {
+          return (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-4">
+              {list.map(item => {
+                const isChecked = fieldData.includes(item);
+                return (
+                  <label key={item} className={`cursor-pointer border-2 rounded-xl p-3 flex items-center gap-3 min-h-[4rem] transition-all ${isChecked ? 'border-indigo-500 bg-indigo-50 text-indigo-900 shadow-sm' : 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-slate-50 text-slate-700'}`}>
+                    <input type="checkbox" className="hidden" checked={isChecked} onChange={(e) => onChange(fieldName, item, e.target.checked)} />
+                    <div className={`w-5 h-5 rounded border flex items-center justify-center flex-shrink-0 ${isChecked ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300'}`}>
+                      {isChecked && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span className="font-semibold text-sm leading-tight block break-words">{item}</span>
+                    </div>
+                  </label>
+                );
+              })}
+              <label className={`cursor-pointer border-2 rounded-xl p-3 flex items-center gap-3 min-h-[4rem] transition-all ${fieldData.includes('Autre') ? 'border-indigo-500 bg-indigo-50 text-indigo-900 shadow-sm' : 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-slate-50 text-slate-700'}`}>
+                <input type="checkbox" className="hidden" checked={fieldData.includes('Autre')} onChange={(e) => onChange(fieldName, 'Autre', e.target.checked)} />
+                <div className={`w-5 h-5 rounded border flex items-center justify-center flex-shrink-0 ${fieldData.includes('Autre') ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300'}`}>
+                  {fieldData.includes('Autre') && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
+                </div>
+                <div className="flex-1 min-w-0">
+                   <span className="font-semibold text-sm leading-tight block break-words">Autre...</span>
+                </div>
+              </label>
+            </div>
+          );
+        };
+
+        const ChecklistGrid = ({ list, fieldData, fieldName, onChange }) => {
+          return (
+            <div className="flex flex-col gap-2 mt-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+              {list.map(item => {
+                const isChecked = fieldData.includes(item);
+                const hasParen = item.includes(' (');
+                const mainText = hasParen ? item.split(' (')[0] : item;
+                const subText = hasParen ? '(' + item.split(' (')[1] : '';
+
+                return (
+                  <label key={item} className="cursor-pointer flex items-start gap-3 group transition-all p-1">
+                    <input type="checkbox" className="hidden" checked={isChecked} onChange={(e) => onChange(fieldName, item, e.target.checked)} />
+                    <div className={`mt-0.5 w-5 h-5 rounded border flex items-center justify-center flex-shrink-0 transition-colors ${isChecked ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300 group-hover:border-indigo-400'}`}>
+                      {isChecked && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span className={`font-semibold text-base leading-snug transition-colors ${isChecked ? 'text-indigo-900' : 'text-slate-700 group-hover:text-indigo-600'}`}>{mainText}</span>
+                      {subText && <span className={`text-sm block leading-snug mt-0.5 ${isChecked ? 'text-indigo-700/80' : 'text-slate-500 group-hover:text-slate-600'}`}>{subText}</span>}
+                    </div>
+                  </label>
+                );
+              })}
+              <label className="cursor-pointer flex items-start gap-3 group transition-all p-1">
+                <input type="checkbox" className="hidden" checked={fieldData.includes('Autre')} onChange={(e) => onChange(fieldName, 'Autre', e.target.checked)} />
+                <div className={`mt-0.5 w-5 h-5 rounded border flex items-center justify-center flex-shrink-0 transition-colors ${fieldData.includes('Autre') ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300 group-hover:border-indigo-400'}`}>
+                  {fieldData.includes('Autre') && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
+                </div>
+                <div className="flex-1 min-w-0">
+                   <span className={`font-semibold text-base leading-snug transition-colors ${fieldData.includes('Autre') ? 'text-indigo-900' : 'text-slate-700 group-hover:text-indigo-600'}`}>Autre...</span>
+                </div>
+              </label>
+            </div>
+          );
         };
 
         function App() {
@@ -196,12 +390,104 @@
             p += `====================================================\n`;
             p += `▶ SECTION 1 : TEXTE OBLIGATOIRE (Consignes de rédaction)\n`;
             p += `====================================================\n`;
+            
+            if (!formData.typeTexte || formData.typeTexte === 'Texte narratif') {
+              p += `Génère une histoire originale de qualité littéraire professionnelle. Le texte doit impérativement être structuré comme une œuvre d’auteur, avec une cohérence narrative parfaite.\n`;
+              p += `L’histoire doit obligatoirement contenir :\n\n`;
+              p += `- Un titre accrocheur et pertinent\n`;
+              p += `- Un début (mise en place du contexte, des personnages et de l’univers)\n`;
+              p += `- Un milieu (développement de l’intrigue avec actions, tensions, événements et évolutions narratives)\n`;
+              p += `- Une fin (résolution cohérente et satisfaisante de l’intrigue)\n\n`;
+              p += `Le récit doit respecter une progression logique, fluide et cohérente du début jusqu’à la fin, sans contradictions internes.\n`;
+              p += `Le style doit être digne d’un auteur publié : riche, maîtrisé, immersif, avec un bon rythme narratif et une construction solide des scènes et des personnages.\n`;
+              p += `Aucune partie de l’histoire ne doit être indépendante : chaque élément doit contribuer à l’évolution globale du récit.\n`;
+              p += `L’ensemble doit former une œuvre complète, structurée et cohérente du point de vue narratif, émotionnel et logique.\n\n`;
+            } else if (formData.typeTexte === 'Texte descriptif') {
+              p += `Génère un texte descriptif de qualité professionnelle. Le texte doit impérativement être structuré.\n\n`;
+              p += `Le texte descriptif vise à peindre un portrait précis et organisé grâce à des informations pertinentes et à un vocabulaire évocateur. Il peut être objectif (informatif) ou subjectif (impression, appréciation).\n\n`;
+              p += `Caractéristiques essentielles :\n`;
+              p += `- Présente un sujet clairement identifié afin de le décrire (exemple : décrire un personnage d'Halloween, décrire un animal (habitation, alimentation). Il peut s'agir parfois d'une description physique ou d'une description plus générale.\n`;
+              p += `- Regroupe les informations selon une organisation logique (du général au particulier, du haut vers le bas, de l’ensemble vers les détails, etc.).\n`;
+              p += `- Utilise des groupes du nom enrichis, des adjectifs, des compléments, des comparaisons et parfois des images.\n`;
+              p += `- Fait appel aux cinq sens pour rendre la description plus vivante.\n`;
+              p += `- Emploie souvent des temps de l’indicatif (présent, imparfait) pour situer la description.\n`;
+              p += `- Peut intégrer des marqueurs spatiaux (à gauche, au centre, au loin, au sommet, etc.).\n\n`;
+              p += `Intention de communication :\n`;
+              p += `Informer, expliquer, représenter ou faire ressentir afin que le lecteur se fasse une image mentale claire du sujet décrit.\n\n`;
+            } else {
+              p += `Génère un ${formData.typeTexte.toLowerCase()} de qualité professionnelle.\n`;
+              p += `Tu dois impérativement prendre en considération le type de texte sélectionné et adapter la requête en conséquence afin que le résultat final généré soit en lien direct avec le type de texte choisi.\n`;
+              p += `L’ensemble doit former une œuvre complète, structurée et cohérente.\n\n`;
+            }
+            p += `----------------------------------------------------\n`;
+
             if (formData.niveau) p += `- Niveau ciblé : ${formData.niveau}\n`;
             
-            if (formData.typeTexte) p += `- Type de texte : ${formData.typeTexte}\n`;
+            if (formData.typeTexte) {
+              p += `- Type de texte : ${formData.typeTexte}\n`;
+              if (formData.typeTexte === 'Texte courant') {
+                p += `  - Des titres significatifs en lien avec les paragraphes présentant les descriptions/informations\n`;
+              }
+            }
             if (formData.sousType && ['Texte narratif', 'Texte descriptif', 'Texte courant'].includes(formData.typeTexte)) {
               p += `  Structure exigée : ${formData.sousType}\n`;
-              p += `  ⚠️ CONSIGNE MÉTA STRICTE : Tu dois structurer le texte selon ce schéma, mais tu ne dois JAMAIS, au grand jamais, écrire les noms des parties du schéma dans le texte final (exemple: interdit d'écrire "Situation de départ", "Élément déclencheur", "Développement", etc.). Le texte doit couler naturellement sans ces intertitres.\n`;
+              if (formData.typeTexte === 'Texte narratif') {
+                p += `  ⚠️ CONSIGNE MÉTA STRICTE : Tu dois structurer le texte selon ce schéma, mais tu ne dois JAMAIS, au grand jamais, écrire les noms des parties du schéma dans le texte final (exemple: interdit d'écrire "Situation de départ", "Élément déclencheur", "Développement", etc.). Le texte doit couler naturellement sans ces intertitres.\n`;
+              }
+              if (formData.typeTexte === 'Texte courant' && formData.sousType === 'Schéma en sous-thèmes') {
+                p += `  ⚠️ CONSIGNE STRICTE : Des titres logiques et représentatifs en lien avec le contenu des paragraphes seront indiqués. Les contenus des différents paragraphes seront en lien direct avec le thème sélectionné afin de bien décrire ce que l'on désire. Exemple : thème choisi (jeux vidéo : exemples de sous-titres : console, rôle des jeux vidéo, manette, temps d'écran raisonnable, bienfaits, éléments à faire attention (l'IA doit impérativement se servir de son intelligence afin de cibler des sujets (intertitres) variés et intéressants pour des élèves du primaire. Autre exemple : animal de compagnie (l'IA décidera de l'animal si ce n'est pas indiqué ou parlera de plusieurs animaux. Les sous titre pourraient être, alimentation, comment en prendre soin, prix, nourriture, caractéristiques physique.\n`;
+              }
+            }
+
+            p += `\n⚠️ CONSIGNE STRICTE SUR LES PARAGRAPHES :\n`;
+            p += `Il doit impérativement y avoir des paragraphes structurés selon le type de texte et le schéma sélectionné.\n`;
+            p += `Utilise ta logique d'IA pour créer des paragraphes parfaits et logiques.\n`;
+
+            if (formData.typeTexte === 'Texte narratif') {
+              p += `\n⚠️ DÉBUT DU TEXTE NARRATIF :\n`;
+              p += `Puisque c'est un texte narratif, l'histoire générée doit impérativement avoir un début (situation de départ) comprenant :\n`;
+              p += `- Des informations sur le lieu\n`;
+              p += `- Des informations sur le temps\n`;
+              p += `- La présentation des personnages\n`;
+              p += `- Quelques actions pour amorcer le récit.\n`;
+
+              if (formData.ideePrincipale && formData.ideePrincipale.trim()) {
+                p += `\n====================================================\n`;
+                p += `▶ IDÉE PRINCIPALE DU TEXTE\n`;
+                p += `====================================================\n`;
+                p += `L'histoire doit obligatoirement se baser sur cette idée principale :\n"${formData.ideePrincipale.trim()}"\n`;
+              }
+
+              p += `\n🔹 MÉTA-CONSIGNE – OBJECTIF DU PERSONNAGE (INTENTION NARRATIVE)\n`;
+              p += `Le récit doit toujours être construit autour d’un objectif clair du personnage principal.\n`;
+              p += `Cet objectif constitue le moteur de l’histoire et doit apparaître naturellement dès le début du récit.\n`;
+              p += `⚠️ Cet élément doit être intégré de façon fluide et narrative, sans donner l’impression d’une consigne scolaire ou d’une phrase artificielle.\n\n`;
+              p += `🧠 Définition pour l’IA :\n`;
+              p += `L’objectif du personnage est ce qu’il souhaite accomplir, obtenir, résoudre, découvrir, éviter ou réussir.\n`;
+              p += `Cet objectif doit orienter ses actions et donner une direction à l’histoire.\n\n`;
+              p += `🎯 Position dans le récit :\n`;
+              p += `Au début du texte, l’introduction doit inclure naturellement :\n`;
+              p += `- Le personnage principal\n`;
+              p += `- Le cadre (temps ou lieu)\n`;
+              p += `- L’objectif ou la mission du personnage\n`;
+              p += `Ces éléments doivent apparaître dans le fil de la narration, et non sous forme de liste d’informations.\n\n`;
+              p += `✍️ Règle de fluidité narrative (très importante) :\n`;
+              p += `L’objectif ne doit jamais être présenté comme une information mécanique.\n`;
+              p += `❌ À éviter :\n`;
+              p += `« L’objectif de Mia était de retrouver son chien. »\n`;
+              p += `« Le personnage devait accomplir une mission. »\n`;
+              p += `✅ À produire :\n`;
+              p += `« Ce matin-là, Mia parcourait le quartier en appelant son chien disparu. »\n`;
+              p += `« Louis s’entraînait depuis des semaines pour gagner la grande course de l’école. »\n`;
+              p += `👉 Le but doit être montré ou raconté, pas annoncé comme une consigne.\n\n`;
+              p += `🟢 Deux façons acceptées d’intégrer l’objectif :\n`;
+              p += `Objectif explicite (nommé dans l’histoire) :\nLe but est clairement formulé, mais intégré naturellement dans la narration.\n`;
+              p += `Exemple : « Emma voulait absolument retrouver la clé mystérieuse. »\n\n`;
+              p += `Objectif implicite (montré) :\nLe lecteur comprend la mission grâce aux actions du personnage.\n`;
+              p += `Exemple : « Emma fouillait chaque tiroir de la maison, persuadée que la clé devait s’y trouver. »\n\n`;
+              p += `🔄 Règle globale à intégrer dans la requête finale :\n`;
+              p += `Le texte doit présenter, dès le début du récit, un personnage principal ayant un objectif clair.\n`;
+              p += `Cet objectif doit être intégré de manière fluide dans la narration et guider les actions du personnage tout au long de l’histoire.\n`;
             }
 
             if (formData.typeAdaptation === 'aucune') {
@@ -280,6 +566,130 @@
               p += `  (Rappel : Un texte qui transmet une idée ou une leçon sans la dire directement. Le lecteur doit déduire le message en réfléchissant à l'histoire. Ex: Une histoire où un personnage aide les autres sans rien attendre en retour suggère l'importance de l'entraide.)\n`;
             }
 
+            // === NOUVELLE SECTION AMBIANCE ET PERSONNAGES ===
+            if (formData.typeTexte === 'Texte narratif') {
+              const formatCat = (arr, autre, isIA) => {
+                if (isIA) return "[Laisser l'IA décider]";
+                const list = [...arr];
+                if (arrayContains(list, 'Autre') && autre) {
+                  list[list.indexOf('Autre')] = autre;
+                }
+                return list.length > 0 ? list.join(', ') : "Non spécifié";
+              };
+              const arrayContains = (arr, val) => arr.indexOf(val) !== -1;
+
+              const hasPhysiqueMain = formData.showCatPhysMain && (formData.physiqueMain.length > 0 || formData.physiqueMainIA);
+              const hasDemarcheMain = formData.showCatDemarcheMain && (formData.demarcheMain.length > 0 || formData.demarcheMainIA);
+              const hasVisageMain = formData.showCatVisageMain && (formData.visageMain.length > 0 || formData.visageMainIA);
+              const hasCorpMain = formData.showCatCorpMain && (formData.corpMain.length > 0 || formData.corpMainIA);
+              const hasHabitMain = formData.showCatHabitMain && (formData.habitMain.length > 0 || formData.habitMainIA);
+              
+              const isTraitsExpMainActive = formData.showCatTraitsMain && formData.activeTraitsExpMain && (formData.traitsExpMain.length > 0 || formData.traitsExpMainIA);
+              const isTraitsImpMainActive = formData.showCatTraitsMain && formData.activeTraitsImpMain && (formData.traitsImpMain.length > 0 || formData.traitsImpMainIA);
+              const hasTraitsMain = isTraitsExpMainActive || isTraitsImpMainActive;
+
+              const isEmotionsExpMainActive = formData.showCatEmotionsMain && formData.activeEmotionsExpMain && (formData.emotionsExpMain.length > 0 || formData.emotionsExpMainIA);
+              const isEmotionsImpMainActive = formData.showCatEmotionsMain && formData.activeEmotionsImpMain && (formData.emotionsImpMain.length > 0 || formData.emotionsImpMainIA);
+              const hasEmotionsMain = isEmotionsExpMainActive || isEmotionsImpMainActive;
+
+              const hasMainChar = hasPhysiqueMain || hasDemarcheMain || hasVisageMain || hasCorpMain || hasHabitMain || hasTraitsMain || hasEmotionsMain;
+              
+              const hasEnv = formData.tempsRecit.length > 0 || formData.lieu.length > 0 || formData.ambiance.length > 0 || formData.tempsRecitIA || formData.lieuIA || formData.ambianceIA;
+
+              const hasPhysiqueSec = formData.showCatPhysSec && (formData.physiqueSec.length > 0 || formData.physiqueSecIA);
+              const hasDemarcheSec = formData.showCatDemarcheSec && (formData.demarcheSec.length > 0 || formData.demarcheSecIA);
+              const hasVisageSec = formData.showCatVisageSec && (formData.visageSec.length > 0 || formData.visageSecIA);
+              const hasCorpSec = formData.showCatCorpSec && (formData.corpSec.length > 0 || formData.corpSecIA);
+              const hasHabitSec = formData.showCatHabitSec && (formData.habitSec.length > 0 || formData.habitSecIA);
+              
+              const isTraitsExpSecActive = formData.hasSecondaires && formData.showCatTraitsSec && formData.activeTraitsExpSec && (formData.traitsExpSec.length > 0 || formData.traitsExpSecIA);
+              const isTraitsImpSecActive = formData.hasSecondaires && formData.showCatTraitsSec && formData.activeTraitsImpSec && (formData.traitsImpSec.length > 0 || formData.traitsImpSecIA);
+              const hasTraitsSec = isTraitsExpSecActive || isTraitsImpSecActive;
+
+              const isEmotionsExpSecActive = formData.hasSecondaires && formData.showCatEmotionsSec && formData.activeEmotionsExpSec && (formData.emotionsExpSec.length > 0 || formData.emotionsExpSecIA);
+              const isEmotionsImpSecActive = formData.hasSecondaires && formData.showCatEmotionsSec && formData.activeEmotionsImpSec && (formData.emotionsImpSec.length > 0 || formData.emotionsImpSecIA);
+              const hasEmotionsSec = isEmotionsExpSecActive || isEmotionsImpSecActive;
+
+              const hasSecChar = formData.hasSecondaires && (hasPhysiqueSec || hasDemarcheSec || hasVisageSec || hasCorpSec || hasHabitSec || hasTraitsSec || hasEmotionsSec);
+
+              const ruleTraitsExp = isTraitsExpMainActive || isTraitsExpSecActive;
+              const ruleTraitsImp = isTraitsImpMainActive || isTraitsImpSecActive;
+              const ruleEmoExp = isEmotionsExpMainActive || isEmotionsExpSecActive;
+              const ruleEmoImp = isEmotionsImpMainActive || isEmotionsImpSecActive;
+
+              if (hasMainChar || hasEnv || hasSecChar) {
+                p += `\n====================================================\n`;
+                p += `▶ PARAMÈTRES D'AMBIANCE ET DE PERSONNAGES\n`;
+                p += `====================================================\n`;
+                
+                if (hasMainChar) {
+                  p += `PERSONNAGE PRINCIPAL :\n`;
+                  if (formData.nomMain.trim()) p += `- Nom : ${formData.nomMain}\n`;
+                  if (hasPhysiqueMain) p += `- Caractéristiques physiques générales : ${formatCat(formData.physiqueMain, formData.physiqueMainAutre, formData.physiqueMainIA)}\n`;
+                  if (hasDemarcheMain) p += `- Démarche et mouvements : ${formatCat(formData.demarcheMain, formData.demarcheMainAutre, formData.demarcheMainIA)}\n`;
+                  if (hasVisageMain) p += `- Visage et expressions : ${formatCat(formData.visageMain, formData.visageMainAutre, formData.visageMainIA)}\n`;
+                  if (hasCorpMain) p += `- Particularités corporelles : ${formatCat(formData.corpMain, formData.corpMainAutre, formData.corpMainIA)}\n`;
+                  if (hasHabitMain) p += `- Habillement : ${formatCat(formData.habitMain, formData.habitMainAutre, formData.habitMainIA)}\n`;
+                  
+                  if (isTraitsExpMainActive) p += `- Traits de caractère (explicites) : ${formatCat(formData.traitsExpMain, formData.traitsExpMainAutre, formData.traitsExpMainIA)}\n`;
+                  if (isTraitsImpMainActive) p += `- Traits de caractère (implicites) : ${formatCat(formData.traitsImpMain, formData.traitsImpMainAutre, formData.traitsImpMainIA)}\n`;
+                  
+                  if (isEmotionsExpMainActive) p += `- Émotions (explicites) : ${formatCat(formData.emotionsExpMain, formData.emotionsExpMainAutre, formData.emotionsExpMainIA)}\n`;
+                  if (isEmotionsImpMainActive) p += `- Émotions (implicites) : ${formatCat(formData.emotionsImpMain, formData.emotionsImpMainAutre, formData.emotionsImpMainIA)}\n`;
+                  p += `\n`;
+                }
+
+                if (hasSecChar) {
+                  p += `PERSONNAGES SECONDAIRES :\n`;
+                  p += `- Nombre : ${formData.nbSecondaires}\n`;
+                  if (formData.nomSec.trim()) p += `- Nom(s) : ${formData.nomSec}\n`;
+                  if (hasPhysiqueSec) p += `- Caractéristiques physiques générales : ${formatCat(formData.physiqueSec, formData.physiqueSecAutre, formData.physiqueSecIA)}\n`;
+                  if (hasDemarcheSec) p += `- Démarche et mouvements : ${formatCat(formData.demarcheSec, formData.demarcheSecAutre, formData.demarcheSecIA)}\n`;
+                  if (hasVisageSec) p += `- Visage et expressions : ${formatCat(formData.visageSec, formData.visageSecAutre, formData.visageSecIA)}\n`;
+                  if (hasCorpSec) p += `- Particularités corporelles : ${formatCat(formData.corpSec, formData.corpSecAutre, formData.corpSecIA)}\n`;
+                  if (hasHabitSec) p += `- Habillement : ${formatCat(formData.habitSec, formData.habitSecAutre, formData.habitSecIA)}\n`;
+
+                  if (isTraitsExpSecActive) p += `- Traits de caractère (explicites) : ${formatCat(formData.traitsExpSec, formData.traitsExpSecAutre, formData.traitsExpSecIA)}\n`;
+                  if (isTraitsImpSecActive) p += `- Traits de caractère (implicites) : ${formatCat(formData.traitsImpSec, formData.traitsImpSecAutre, formData.traitsImpSecIA)}\n`;
+                  
+                  if (isEmotionsExpSecActive) p += `- Émotions (explicites) : ${formatCat(formData.emotionsExpSec, formData.emotionsExpSecAutre, formData.emotionsExpSecIA)}\n`;
+                  if (isEmotionsImpSecActive) p += `- Émotions (implicites) : ${formatCat(formData.emotionsImpSec, formData.emotionsImpSecAutre, formData.emotionsImpSecIA)}\n`;
+                  p += `🎯 Consigne IA : Les personnages secondaires doivent interagir avec le personnage principal et influencer l’histoire de manière cohérente.\n\n`;
+                }
+
+                if (hasEnv) {
+                  p += `CADRE SPATIO-TEMPOREL ET AMBIANCE :\n`;
+                  p += `- Temps (époque/moment) : ${formatCat(formData.tempsRecit, formData.tempsRecitAutre, formData.tempsRecitIA)}\n`;
+                  p += `- Lieu : ${formatCat(formData.lieu, formData.lieuAutre, formData.lieuIA)}\n`;
+                  p += `- Ambiance du récit : ${formatCat(formData.ambiance, formData.ambianceAutre, formData.ambianceIA)}\n\n`;
+                }
+
+                if (hasMainChar || hasSecChar || hasEnv) {
+                  p += `🎯 RÈGLES IA OBLIGATOIRES POUR LES PERSONNAGES ET L'AMBIANCE :\n`;
+                  if (hasPhysiqueMain || hasDemarcheMain || hasVisageMain || hasCorpMain || hasHabitMain || hasPhysiqueSec || hasDemarcheSec || hasVisageSec || hasCorpSec || hasHabitSec) {
+                    p += `- Apparence et Habillement :\n`;
+                    p += `  Les caractéristiques physiques servent à décrire directement le personnage.\n`;
+                    p += `  Les particularités spécifiques servent à créer des indices narratifs subtils.\n`;
+                    p += `  L'habillement doit être intégré dans les descriptions sans être simplement listé.\n`;
+                  }
+                  if (ruleTraitsExp || ruleTraitsImp) {
+                    p += `- Trait de caractère :\n`;
+                    if (ruleTraitsExp) p += `  Explicite : le mot du trait doit apparaître clairement dans le texte. (Ex: "Léa est courageuse.")\n`;
+                    if (ruleTraitsImp) p += `  Implicite : le trait ne doit jamais être nommé. Il doit être inféré par les actions, gestes, décisions ou réactions du personnage. (Ex: "Malgré les bruits inquiétants, Léa continua d’avancer dans le couloir sombre sans appeler à l’aide.")\n`;
+                  }
+                  if (ruleEmoExp || ruleEmoImp) {
+                    p += `- Émotion :\n`;
+                    if (ruleEmoExp) p += `  Explicite : le mot de l’émotion doit apparaître dans le texte.\n`;
+                    if (ruleEmoImp) p += `  Implicite : l’émotion ne doit jamais être nommée. Elle doit être montrée par les gestes, réactions physiques, choix, langage corporel. (Ex: "Tom recula lentement, les mains serrées, en fixant la porte qui tremblait légèrement.")\n`;
+                  }
+                  if (hasEnv) {
+                    p += `- Ambiance du récit :\n`;
+                    p += `  L’ambiance doit être visible dans le texte à travers les événements, le décor, le vocabulaire et les actions des personnages. Elle ne doit pas seulement être mentionnée : elle doit être ressentie par le lecteur.\n`;
+                  }
+                }
+              }
+            }
+
             if (formData.motsImposes.trim()) {
               p += `\n- Vocabulaire imposé :\n  Intègre impérativement ces mots dans le texte : ${formData.motsImposes}\n`;
               p += `  Consigne stricte : Insérer les mots fournis naturellement en maintenant une cohérence parfaite avec l'idée du texte.\n`;
@@ -296,7 +706,7 @@
               p += `====================================================\n`;
               p += `Consigne stricte : Tu dois surligner en bleu les mots complexes dans la Section 1 (Texte). Ensuite, ajoute un glossaire simple et clair à la fin du texte dans cette Section 2.\n`;
               p += `Les mots surlignés apparaîtront ici avec une explication claire, simple et avec des mots concrets et faciles à comprendre.\n`;
-              p += `\n🧠 CONSIGNE D'EXPERT PÉDAGOGIQUE : En tant qu'expert de la pédagogie au primaire au Québec, tu dois cibler des mots difficiles (riches) spécifiquement pour le niveau sélectionné.\n`;
+              p += `\n🧠 CONSIGNE D'EXPERT PÉDAGOGIQUE : En tant qu'expert de la pédagogie au primaire au Québec, tu dois cibler des mots difficiles (riches) spécifiquement pour le cycle sélectionné (${formData.niveau || 'le niveau ciblé'}).\n`;
               p += `Si un mot est difficile ou riche, il faut impérativement l'intégrer dans le glossaire. Sélectionne entre 2 et 8 mots de ce type dans ton texte, surligne-les en bleu, et ajoute-les au glossaire.\n`;
               p += `Ces mots complexes que tu as identifiés s'ajouteront aux mots spécifiques que l'enseignant a potentiellement demandés ci-dessous.\n`;
 
@@ -441,6 +851,39 @@
             } else {
               p += `Format TEXTE BRUT ÉDITABLE structuré pour Word.\nINTERDICTIONS : Aucun HTML, aucun tableau, aucun fond de couleur.\n`;
             }
+            
+            p += `\nEND FINAL CONSIGNE\n`;
+            p += `Génère un texte adapté à des élèves du primaire en intégrant tous les choix sélectionnés.\n`;
+            p += `Respecte les règles suivantes :\n`;
+
+            if (formData.typeTexte === 'Texte narratif') {
+              const isTraitsExpMainActive = formData.showCatTraitsMain && formData.activeTraitsExpMain && (formData.traitsExpMain.length > 0 || formData.traitsExpMainIA);
+              const isTraitsImpMainActive = formData.showCatTraitsMain && formData.activeTraitsImpMain && (formData.traitsImpMain.length > 0 || formData.traitsImpMainIA);
+              const isEmotionsExpMainActive = formData.showCatEmotionsMain && formData.activeEmotionsExpMain && (formData.emotionsExpMain.length > 0 || formData.emotionsExpMainIA);
+              const isEmotionsImpMainActive = formData.showCatEmotionsMain && formData.activeEmotionsImpMain && (formData.emotionsImpMain.length > 0 || formData.emotionsImpMainIA);
+
+              const isTraitsExpSecActive = formData.hasSecondaires && formData.showCatTraitsSec && formData.activeTraitsExpSec && (formData.traitsExpSec.length > 0 || formData.traitsExpSecIA);
+              const isTraitsImpSecActive = formData.hasSecondaires && formData.showCatTraitsSec && formData.activeTraitsImpSec && (formData.traitsImpSec.length > 0 || formData.traitsImpSecIA);
+              const isEmotionsExpSecActive = formData.hasSecondaires && formData.showCatEmotionsSec && formData.activeEmotionsExpSec && (formData.emotionsExpSec.length > 0 || formData.emotionsExpSecIA);
+              const isEmotionsImpSecActive = formData.hasSecondaires && formData.showCatEmotionsSec && formData.activeEmotionsImpSec && (formData.emotionsImpSec.length > 0 || formData.emotionsImpSecIA);
+
+              const ruleTraitsExp = isTraitsExpMainActive || isTraitsExpSecActive;
+              const ruleTraitsImp = isTraitsImpMainActive || isTraitsImpSecActive;
+              const ruleEmoExp = isEmotionsExpMainActive || isEmotionsExpSecActive;
+              const ruleEmoImp = isEmotionsImpMainActive || isEmotionsImpSecActive;
+
+              if (ruleTraitsExp || ruleEmoExp) {
+                p += `- Traits et/ou émotions explicites = nommés dans le texte\n`;
+              }
+              if (ruleTraitsImp || ruleEmoImp) {
+                p += `- Traits et/ou émotions implicites = jamais nommés, uniquement montrés\n`;
+              }
+              p += `- Ambiance = ressentie dans le récit\n`;
+              if (formData.hasSecondaires) p += `- Personnages secondaires = intégrés de façon cohérente\n`;
+              
+              p += `- Cohérence absolue Thème/Lieu : Respecte méticuleusement (impérativement) le thème et le lieu sélectionné. Exemple : Si le thème est le sport et que le lieu est l'école, ce doit impérativement être une histoire qui se déroule à l'école. Ce peut donc être une activité sportive organisée lors de la récréation au cours de laquelle un problème survient, une chicane, etc. Autre exemple : thème magie Lieu : forêt, l'histoire doit impérativement être en lien avec la magie et se dérouler dans une forêt.\n`;
+            }
+            p += `- Plusieurs choix = combinés harmonieusement.\n`;
 
             setGeneratedPrompt(p);
             setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
@@ -461,72 +904,6 @@
             document.body.removeChild(textArea);
           };
 
-          const RadioCard = ({ label, value, current, onChange, description = null, isSmall = false }) => {
-            const isSelected = current === value;
-            return (
-              <label className={`
-                cursor-pointer group block border-2 transition-all duration-300 ease-in-out transform relative overflow-hidden
-                ${isSmall ? 'p-4 rounded-xl' : 'p-6 rounded-2xl'}
-                ${isSelected 
-                  ? 'border-indigo-500 bg-indigo-50 shadow-[0_4px_20px_-5px_rgba(79,70,229,0.2)] -translate-y-1' 
-                  : 'border-slate-200 bg-white hover:border-indigo-300 hover:shadow-md hover:-translate-y-1'}
-              `}>
-                <input 
-                  type="radio" 
-                  className="hidden" 
-                  value={value} 
-                  checked={isSelected} 
-                  onChange={() => onChange(value)} 
-                />
-                {isSelected && <div className="absolute top-0 right-0 w-16 h-16 bg-indigo-100 rounded-bl-full -z-10 transition-all duration-300"></div>}
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 flex-shrink-0">
-                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${isSelected ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300 group-hover:border-indigo-400'}`}>
-                      {isSelected && <div className="w-2 h-2 rounded-full bg-white"></div>}
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <span className={`font-bold transition-colors block ${isSmall ? 'text-base' : 'text-lg'} ${isSelected ? 'text-indigo-900' : 'text-slate-800 group-hover:text-indigo-700'}`}>
-                      {label}
-                    </span>
-                    {description && <p className="mt-2 text-slate-500 text-sm leading-relaxed">{description}</p>}
-                  </div>
-                </div>
-              </label>
-            );
-          };
-
-          const CheckboxCard = ({ label, checked, onChange, description = null, isSmall = false }) => (
-            <label className={`
-              cursor-pointer group block border-2 transition-all duration-300 ease-in-out transform relative overflow-hidden
-              ${isSmall ? 'p-4 rounded-xl' : 'p-6 rounded-2xl'}
-              ${checked 
-                ? 'border-indigo-500 bg-indigo-50 shadow-[0_4px_20px_-5px_rgba(79,70,229,0.2)] -translate-y-1' 
-                : 'border-slate-200 bg-white hover:border-indigo-300 hover:shadow-md hover:-translate-y-1'}
-            `}>
-              <input 
-                type="checkbox" 
-                className="hidden" 
-                checked={checked} 
-                onChange={(e) => onChange(e.target.checked)} 
-              />
-              {checked && <div className="absolute top-0 right-0 w-16 h-16 bg-indigo-100 rounded-bl-full -z-10 transition-all duration-300"></div>}
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex-shrink-0">
-                  <div className={`w-6 h-6 rounded border-2 flex items-center justify-center transition-colors ${checked ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300 group-hover:border-indigo-400'}`}>
-                    {checked && <Check className="w-4 h-4 text-white" strokeWidth={3} />}
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <span className={`font-bold transition-colors block ${isSmall ? 'text-base' : 'text-lg'} ${checked ? 'text-indigo-900' : 'text-slate-800 group-hover:text-indigo-700'}`}>
-                    {label}
-                  </span>
-                  {description && <p className="mt-2 text-slate-500 text-sm leading-relaxed">{description}</p>}
-                </div>
-              </div>
-            </label>
-          );
-
           return (
             <div className="min-h-screen flex justify-center items-center p-4 sm:p-6 lg:p-8 text-slate-800 font-sans">
               
@@ -543,7 +920,7 @@
                     <p className="text-indigo-200 mt-2 text-sm font-medium">Création pédagogique avancée</p>
                   </div>
                   <div className="overflow-y-auto flex-1 p-4 space-y-2 custom-scrollbar">
-                    {TABS.map(tab => {
+                    {TABS.filter(tab => tab.id !== 6 || formData.typeTexte === 'Texte narratif').map(tab => {
                       const isActive = activeTab === tab.id;
                       const IconComponent = tab.icon;
                       return (
@@ -633,7 +1010,7 @@
                                 {formData.typeTexte === 'Texte descriptif' && ['Schéma en zoom', 'Schéma par catégories'].map(sub => (
                                   <RadioCard key={sub} label={sub} value={sub} current={formData.sousType} onChange={(v) => handleChange('sousType', v)} isSmall />
                                 ))}
-                                {formData.typeTexte === 'Texte courant' && ['Schéma logique (type encyclopédie)', 'Schéma en sous-thèmes (Quoi, Où, Comment)'].map(sub => (
+                                {formData.typeTexte === 'Texte courant' && ['Schéma logique (type encyclopédie)', 'Schéma en sous-thèmes'].map(sub => (
                                   <RadioCard key={sub} label={sub} value={sub} current={formData.sousType} onChange={(v) => handleChange('sousType', v)} isSmall />
                                 ))}
                               </div>
@@ -780,7 +1157,7 @@
                                       Génération de Glossaire
                                     </h3>
                                     <p className="text-slate-500 mb-6 text-sm relative z-10">
-                                      Création automatique d'une section d'explication de mots à la fin du texte.
+                                      Création automatique d'une section d'explication de mots à la fin du texte. <br />
                                     </p>
                                     <CheckboxCard 
                                       label={<span className="text-blue-700">Surligner en bleu les mots complexes à intégrer dans le texte.</span>}
@@ -813,23 +1190,7 @@
                                 </h3>
                                 <p className="text-slate-500 mb-6 text-lg">Sélectionnez les figures de style que l'IA devra intégrer au texte.</p>
                                 
-                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
-                                  {FIGURES_STYLE.map(fs => {
-                                    const isChecked = formData.figuresStyle.includes(fs.id);
-                                    return (
-                                      <label key={fs.id} className={`flex items-start gap-4 p-5 cursor-pointer rounded-2xl border-2 transition-all duration-300 ${isChecked ? 'bg-indigo-50 border-indigo-500 shadow-md -translate-y-1' : 'bg-white border-slate-200 hover:border-indigo-300 hover:shadow-sm hover:-translate-y-1'}`}>
-                                        <input type="checkbox" className="hidden" checked={isChecked} onChange={(e) => handleCheckboxArray('figuresStyle', fs.id, e.target.checked)} />
-                                        <div className={`mt-1 w-6 h-6 flex-shrink-0 rounded border-2 flex items-center justify-center transition-colors ${isChecked ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300'}`}>
-                                          {isChecked && <Check className="w-4 h-4 text-white" strokeWidth={3} />}
-                                        </div>
-                                        <div className="flex-1">
-                                          <span className={`font-bold block text-lg transition-colors ${isChecked ? 'text-indigo-900' : 'text-slate-800'}`}>{fs.label}</span>
-                                          <span className="text-sm text-slate-500 mt-2 block leading-relaxed">{fs.desc}</span>
-                                        </div>
-                                      </label>
-                                    );
-                                  })}
-                                </div>
+                                <ChecklistGridCards list={FIGURES_STYLE.map(f => f.id)} fieldData={formData.figuresStyle} fieldName="figuresStyle" onChange={handleCheckboxArray} />
                               </div>
 
                             </div>
@@ -848,9 +1209,9 @@
                               {THEMES_LIST.map(t => {
                                 const isChecked = formData.theme.includes(t);
                                 return (
-                                  <label key={t} className={`cursor-pointer border-2 rounded-xl p-3 text-center transition-all font-bold ${isChecked ? 'border-indigo-500 bg-indigo-50 text-indigo-900 scale-[1.03] shadow-md' : 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-slate-50 text-slate-700'}`}>
+                                  <label key={t} className={`cursor-pointer border-2 rounded-xl p-3 flex items-center justify-center min-h-[3.5rem] text-center transition-all font-bold break-words leading-tight ${isChecked ? 'border-indigo-500 bg-indigo-50 text-indigo-900 scale-[1.03] shadow-md' : 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-slate-50 text-slate-700'}`}>
                                     <input type="checkbox" className="hidden" checked={isChecked} onChange={(e) => handleCheckboxArray('theme', t, e.target.checked)} />
-                                    {t}
+                                    <span className="break-words min-w-0 w-full">{t}</span>
                                   </label>
                                 );
                               })}
@@ -900,7 +1261,590 @@
                         </div>
                       )}
 
-                      {activeTab === 6 && (
+                      {/* ==== ONGLET 6: AMBIANCE ET PERSONNAGES ==== */}
+                      {activeTab === 6 && formData.typeTexte === 'Texte narratif' && (
+                        <div className="animate-fade-in space-y-12">
+                          
+                          {/* IDÉE PRINCIPALE */}
+                          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                            <h3 className="text-2xl font-black text-indigo-900 mb-6 flex items-center gap-3 border-b border-indigo-100 pb-4">
+                              💡 IDÉE PRINCIPALE DU TEXTE
+                            </h3>
+                            <p className="text-slate-500 mb-6">Décrivez brièvement le cœur de votre histoire (les événements de base).</p>
+                            <div className="animate-fade-in relative z-10">
+                              <textarea 
+                                placeholder="Exemple : Chaque matin, un garçon prend l’autobus pour aller à l’école, où il est victime de moqueries et de harcèlement."
+                                value={formData.ideePrincipale}
+                                onChange={(e) => handleChange('ideePrincipale', e.target.value)}
+                                className="w-full p-4 border-2 border-indigo-200 rounded-xl focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 text-lg outline-none min-h-[120px] resize-y custom-scrollbar"
+                              />
+                            </div>
+                          </div>
+
+                          {/* PERSONNAGE PRINCIPAL */}
+                          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                            <h3 className="text-2xl font-black text-indigo-900 mb-6 flex items-center gap-3 border-b border-indigo-100 pb-4">
+                              👤 PERSONNAGE PRINCIPAL
+                            </h3>
+                            <p className="text-slate-500 mb-8">Vous pouvez sélectionner plusieurs choix. Tous les éléments seront intégrés.</p>
+
+                            <div className="mb-8 animate-fade-in relative z-10">
+                              <label className="block text-sm font-bold text-indigo-900 mb-2">Nom du personnage principal (Optionnel) :</label>
+                              <input 
+                                type="text" 
+                                placeholder="Ex: Léo, Mia, M. Tremblay..." 
+                                value={formData.nomMain}
+                                onChange={(e) => handleChange('nomMain', e.target.value)}
+                                className="w-full p-4 border-2 border-indigo-200 rounded-xl focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 text-lg outline-none"
+                              />
+                            </div>
+                            
+                            <div className="space-y-8">
+                              {/* 1. Physique */}
+                              <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                  <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatPhysMain} onChange={e => handleChange('showCatPhysMain', e.target.checked)} />
+                                  <span className="font-bold text-slate-800 text-lg flex-1 min-w-0 break-words">1️⃣ Caractéristiques physiques</span>
+                                </label>
+                                {formData.showCatPhysMain && (
+                                  <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                    <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
+                                      <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.physiqueMainIA} onChange={(e) => handleChange('physiqueMainIA', e.target.checked)} />
+                                      <span className="flex-1 min-w-0 break-words">Laisser l'IA décider</span>
+                                    </label>
+                                    {!formData.physiqueMainIA && (
+                                      <>
+                                        <ChecklistGridCards list={LIST_PHYSIQUE_NOUV} fieldData={formData.physiqueMain} fieldName="physiqueMain" onChange={handleCheckboxArray} />
+                                        {formData.physiqueMain.includes('Autre') && (
+                                          <input type="text" placeholder="Préciser..." value={formData.physiqueMainAutre} onChange={e => handleChange('physiqueMainAutre', e.target.value)} className="mt-3 w-full p-3 border border-slate-300 rounded-lg focus:border-indigo-500 outline-none"/>
+                                        )}
+                                      </>
+                                    )}
+                                  </div>
+                                )}
+                              </div>
+
+                              {/* NOUVEAU : Particularités physiques spécifiques (Démarche) */}
+                              <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                  <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatDemarcheMain} onChange={e => handleChange('showCatDemarcheMain', e.target.checked)} />
+                                  <span className="font-bold text-slate-800 text-lg break-words flex-1 min-w-0">PARTICULARITÉS - Démarche et mouvements</span>
+                                </label>
+                                {formData.showCatDemarcheMain && (
+                                  <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                    <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
+                                      <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.demarcheMainIA} onChange={(e) => handleChange('demarcheMainIA', e.target.checked)} />
+                                      <span className="flex-1 min-w-0 break-words">Laisser l'IA décider</span>
+                                    </label>
+                                    {!formData.demarcheMainIA && (
+                                      <>
+                                        <ChecklistGrid list={LIST_DEMARCHE} fieldData={formData.demarcheMain} fieldName="demarcheMain" onChange={handleCheckboxArray} />
+                                        {formData.demarcheMain.includes('Autre') && (
+                                          <input type="text" placeholder="Préciser..." value={formData.demarcheMainAutre} onChange={e => handleChange('demarcheMainAutre', e.target.value)} className="mt-3 w-full p-3 border border-slate-300 rounded-lg focus:border-indigo-500 outline-none"/>
+                                        )}
+                                      </>
+                                    )}
+                                  </div>
+                                )}
+                              </div>
+
+                              {/* NOUVEAU : Particularités physiques spécifiques (Visage) */}
+                              <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                  <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatVisageMain} onChange={e => handleChange('showCatVisageMain', e.target.checked)} />
+                                  <span className="font-bold text-slate-800 text-lg break-words flex-1 min-w-0">PARTICULARITÉS - Visage et expressions</span>
+                                </label>
+                                {formData.showCatVisageMain && (
+                                  <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                    <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
+                                      <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.visageMainIA} onChange={(e) => handleChange('visageMainIA', e.target.checked)} />
+                                      <span className="flex-1 min-w-0 break-words">Laisser l'IA décider</span>
+                                    </label>
+                                    {!formData.visageMainIA && (
+                                      <>
+                                        <ChecklistGrid list={LIST_VISAGE} fieldData={formData.visageMain} fieldName="visageMain" onChange={handleCheckboxArray} />
+                                        {formData.visageMain.includes('Autre') && (
+                                          <input type="text" placeholder="Préciser..." value={formData.visageMainAutre} onChange={e => handleChange('visageMainAutre', e.target.value)} className="mt-3 w-full p-3 border border-slate-300 rounded-lg focus:border-indigo-500 outline-none"/>
+                                        )}
+                                      </>
+                                    )}
+                                  </div>
+                                )}
+                              </div>
+
+                              {/* NOUVEAU : Particularités physiques spécifiques (Corps) */}
+                              <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                  <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatCorpMain} onChange={e => handleChange('showCatCorpMain', e.target.checked)} />
+                                  <span className="font-bold text-slate-800 text-lg break-words flex-1 min-w-0">PARTICULARITÉS - Corporelles visibles</span>
+                                </label>
+                                {formData.showCatCorpMain && (
+                                  <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                    <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
+                                      <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.corpMainIA} onChange={(e) => handleChange('corpMainIA', e.target.checked)} />
+                                      <span className="flex-1 min-w-0 break-words">Laisser l'IA décider</span>
+                                    </label>
+                                    {!formData.corpMainIA && (
+                                      <>
+                                        <ChecklistGrid list={LIST_CORP} fieldData={formData.corpMain} fieldName="corpMain" onChange={handleCheckboxArray} />
+                                        {formData.corpMain.includes('Autre') && (
+                                          <input type="text" placeholder="Préciser..." value={formData.corpMainAutre} onChange={e => handleChange('corpMainAutre', e.target.value)} className="mt-3 w-full p-3 border border-slate-300 rounded-lg focus:border-indigo-500 outline-none"/>
+                                        )}
+                                      </>
+                                    )}
+                                  </div>
+                                )}
+                              </div>
+
+                              {/* NOUVEAU : Habillement */}
+                              <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                  <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatHabitMain} onChange={e => handleChange('showCatHabitMain', e.target.checked)} />
+                                  <span className="font-bold text-slate-800 text-lg break-words flex-1 min-w-0">HABILLEMENT</span>
+                                </label>
+                                {formData.showCatHabitMain && (
+                                  <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                    <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
+                                      <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.habitMainIA} onChange={(e) => handleChange('habitMainIA', e.target.checked)} />
+                                      <span className="flex-1 min-w-0 break-words">Laisser l'IA décider</span>
+                                    </label>
+                                    {!formData.habitMainIA && (
+                                      <>
+                                        <ChecklistGridCards list={LIST_HABILLEMENT} fieldData={formData.habitMain} fieldName="habitMain" onChange={handleCheckboxArray} />
+                                        {formData.habitMain.includes('Autre') && (
+                                          <input type="text" placeholder="Préciser..." value={formData.habitMainAutre} onChange={e => handleChange('habitMainAutre', e.target.value)} className="mt-3 w-full p-3 border border-slate-300 rounded-lg focus:border-indigo-500 outline-none"/>
+                                        )}
+                                      </>
+                                    )}
+                                  </div>
+                                )}
+                              </div>
+
+                              {/* 2. Traits */}
+                              <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                  <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatTraitsMain} onChange={e => handleChange('showCatTraitsMain', e.target.checked)} />
+                                  <span className="font-bold text-slate-800 text-lg flex-1 min-w-0 break-words">2️⃣ Traits de caractère</span>
+                                </label>
+                                {formData.showCatTraitsMain && (
+                                  <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                                      <div className="p-2">
+                                        <div className="flex justify-between items-center mb-3">
+                                          <label className="flex items-center gap-3 cursor-pointer">
+                                            <input type="checkbox" className="w-5 h-5 rounded text-green-600 focus:ring-green-500 flex-shrink-0" checked={formData.activeTraitsExpMain} onChange={e => handleChange('activeTraitsExpMain', e.target.checked)} />
+                                            <h5 className="font-bold text-green-800 text-lg flex-1 min-w-0 break-words">🟢 Explicite (nommé)</h5>
+                                          </label>
+                                          {formData.activeTraitsExpMain && (
+                                            <label className="flex items-center gap-2 cursor-pointer text-green-700 text-xs font-bold">
+                                              <input type="checkbox" className="w-3 h-3 rounded text-green-600 flex-shrink-0" checked={formData.traitsExpMainIA} onChange={(e) => handleChange('traitsExpMainIA', e.target.checked)} /> 
+                                              <span className="flex-1 min-w-0 break-words">IA décide</span>
+                                            </label>
+                                          )}
+                                        </div>
+                                        {formData.activeTraitsExpMain && !formData.traitsExpMainIA && (
+                                          <>
+                                            <ChecklistGrid list={LIST_TRAITS_EXP} fieldData={formData.traitsExpMain} fieldName="traitsExpMain" onChange={handleCheckboxArray} />
+                                            {formData.traitsExpMain.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.traitsExpMainAutre} onChange={e => handleChange('traitsExpMainAutre', e.target.value)} className="mt-3 w-full p-2 border border-green-300 rounded text-sm outline-none"/>}
+                                          </>
+                                        )}
+                                      </div>
+                                      <div className="p-2">
+                                        <div className="flex justify-between items-center mb-3">
+                                          <label className="flex items-center gap-3 cursor-pointer">
+                                            <input type="checkbox" className="w-5 h-5 rounded text-blue-600 focus:ring-blue-500 flex-shrink-0" checked={formData.activeTraitsImpMain} onChange={e => handleChange('activeTraitsImpMain', e.target.checked)} />
+                                            <h5 className="font-bold text-blue-800 text-lg flex-1 min-w-0 break-words">🔵 Implicite (montré)</h5>
+                                          </label>
+                                          {formData.activeTraitsImpMain && (
+                                            <label className="flex items-center gap-2 cursor-pointer text-blue-700 text-xs font-bold">
+                                              <input type="checkbox" className="w-3 h-3 rounded text-blue-600 flex-shrink-0" checked={formData.traitsImpMainIA} onChange={(e) => handleChange('traitsImpMainIA', e.target.checked)} /> 
+                                              <span className="flex-1 min-w-0 break-words">IA décide</span>
+                                            </label>
+                                          )}
+                                        </div>
+                                        {formData.activeTraitsImpMain && !formData.traitsImpMainIA && (
+                                          <>
+                                            <ChecklistGrid list={LIST_TRAITS_IMP} fieldData={formData.traitsImpMain} fieldName="traitsImpMain" onChange={handleCheckboxArray} />
+                                            {formData.traitsImpMain.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.traitsImpMainAutre} onChange={e => handleChange('traitsImpMainAutre', e.target.value)} className="mt-3 w-full p-2 border border-blue-300 rounded text-sm outline-none"/>}
+                                          </>
+                                        )}
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+
+                              {/* 3. Émotions */}
+                              <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                  <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatEmotionsMain} onChange={e => handleChange('showCatEmotionsMain', e.target.checked)} />
+                                  <span className="font-bold text-slate-800 text-lg flex-1 min-w-0 break-words">3️⃣ Émotions</span>
+                                </label>
+                                {formData.showCatEmotionsMain && (
+                                  <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                                      <div className="p-2">
+                                        <div className="flex justify-between items-center mb-3">
+                                          <label className="flex items-center gap-3 cursor-pointer">
+                                            <input type="checkbox" className="w-5 h-5 rounded text-green-600 focus:ring-green-500 flex-shrink-0" checked={formData.activeEmotionsExpMain} onChange={e => handleChange('activeEmotionsExpMain', e.target.checked)} />
+                                            <h5 className="font-bold text-green-800 text-lg flex-1 min-w-0 break-words">🟢 Explicite (nommée)</h5>
+                                          </label>
+                                          {formData.activeEmotionsExpMain && (
+                                            <label className="flex items-center gap-2 cursor-pointer text-green-700 text-xs font-bold">
+                                              <input type="checkbox" className="w-3 h-3 rounded text-green-600 flex-shrink-0" checked={formData.emotionsExpMainIA} onChange={(e) => handleChange('emotionsExpMainIA', e.target.checked)} /> 
+                                              <span className="flex-1 min-w-0 break-words">IA décide</span>
+                                            </label>
+                                          )}
+                                        </div>
+                                        {formData.activeEmotionsExpMain && !formData.emotionsExpMainIA && (
+                                          <>
+                                            <ChecklistGrid list={LIST_EMOTIONS_EXP} fieldData={formData.emotionsExpMain} fieldName="emotionsExpMain" onChange={handleCheckboxArray} />
+                                            {formData.emotionsExpMain.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.emotionsExpMainAutre} onChange={e => handleChange('emotionsExpMainAutre', e.target.value)} className="mt-3 w-full p-2 border border-green-300 rounded text-sm outline-none"/>}
+                                          </>
+                                        )}
+                                      </div>
+                                      <div className="p-2">
+                                        <div className="flex justify-between items-center mb-3">
+                                          <label className="flex items-center gap-3 cursor-pointer">
+                                            <input type="checkbox" className="w-5 h-5 rounded text-blue-600 focus:ring-blue-500 flex-shrink-0" checked={formData.activeEmotionsImpMain} onChange={e => handleChange('activeEmotionsImpMain', e.target.checked)} />
+                                            <h5 className="font-bold text-blue-800 text-lg flex-1 min-w-0 break-words">🔵 Implicite (montrée)</h5>
+                                          </label>
+                                          {formData.activeEmotionsImpMain && (
+                                            <label className="flex items-center gap-2 cursor-pointer text-blue-700 text-xs font-bold">
+                                              <input type="checkbox" className="w-3 h-3 rounded text-blue-600 flex-shrink-0" checked={formData.emotionsImpMainIA} onChange={(e) => handleChange('emotionsImpMainIA', e.target.checked)} /> 
+                                              <span className="flex-1 min-w-0 break-words">IA décide</span>
+                                            </label>
+                                          )}
+                                        </div>
+                                        {formData.activeEmotionsImpMain && !formData.emotionsImpMainIA && (
+                                          <>
+                                            <ChecklistGrid list={LIST_EMOTIONS_IMP} fieldData={formData.emotionsImpMain} fieldName="emotionsImpMain" onChange={handleCheckboxArray} />
+                                            {formData.emotionsImpMain.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.emotionsImpMainAutre} onChange={e => handleChange('emotionsImpMainAutre', e.target.value)} className="mt-3 w-full p-2 border border-blue-300 rounded text-sm outline-none"/>}
+                                          </>
+                                        )}
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* PERSONNAGES SECONDAIRES */}
+                          <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm">
+                            <label className="flex items-center gap-4 cursor-pointer">
+                              <input type="checkbox" className="w-6 h-6 text-indigo-600 rounded focus:ring-indigo-500 flex-shrink-0" checked={formData.hasSecondaires} onChange={(e) => handleChange('hasSecondaires', e.target.checked)} />
+                              <h3 className="text-2xl font-black text-slate-800 flex-1 min-w-0 break-words">👥 PERSONNAGES SECONDAIRES (Optionnel)</h3>
+                            </label>
+                            
+                            {formData.hasSecondaires && (
+                              <div className="mt-8 space-y-8 animate-fade-in bg-white p-6 rounded-2xl border border-slate-200">
+                                <div className="flex items-center gap-4 mb-6">
+                                  <label className="font-bold text-slate-700 flex-1 min-w-0 break-words">Nombre de personnages secondaires :</label>
+                                  <input type="number" min="1" max="10" value={formData.nbSecondaires} onChange={e => handleChange('nbSecondaires', e.target.value)} className="w-20 p-2 border rounded-lg text-center font-bold outline-none focus:border-indigo-500" />
+                                </div>
+
+                                <div className="mb-6 animate-fade-in relative z-10">
+                                  <label className="block text-sm font-bold text-indigo-900 mb-2">Nom(s) du/des personnage(s) secondaire(s) (Optionnel) :</label>
+                                  <input 
+                                    type="text" 
+                                    placeholder="Ex: Sam, le dragon, Alice..." 
+                                    value={formData.nomSec}
+                                    onChange={(e) => handleChange('nomSec', e.target.value)}
+                                    className="w-full p-4 border-2 border-indigo-200 rounded-xl focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 text-lg outline-none"
+                                  />
+                                </div>
+
+                                {/* 1. Physique Sec */}
+                                <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                  <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                    <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatPhysSec} onChange={e => handleChange('showCatPhysSec', e.target.checked)} />
+                                    <span className="font-bold text-slate-800 text-lg flex-1 min-w-0 break-words">Caractéristiques physiques</span>
+                                  </label>
+                                  {formData.showCatPhysSec && (
+                                    <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                      <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
+                                        <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.physiqueSecIA} onChange={(e) => handleChange('physiqueSecIA', e.target.checked)} /> 
+                                        <span className="flex-1 min-w-0 break-words">IA décide</span>
+                                      </label>
+                                      {!formData.physiqueSecIA && (
+                                        <>
+                                          <ChecklistGridCards list={LIST_PHYSIQUE_NOUV} fieldData={formData.physiqueSec} fieldName="physiqueSec" onChange={handleCheckboxArray} />
+                                          {formData.physiqueSec.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.physiqueSecAutre} onChange={e => handleChange('physiqueSecAutre', e.target.value)} className="mt-3 w-full p-3 border border-slate-300 rounded-lg outline-none"/>}
+                                        </>
+                                      )}
+                                    </div>
+                                  )}
+                                </div>
+
+                                {/* NOUVEAU : Particularités physiques spécifiques (Démarche Sec) */}
+                                <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                  <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                    <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatDemarcheSec} onChange={e => handleChange('showCatDemarcheSec', e.target.checked)} />
+                                    <span className="font-bold text-slate-800 text-lg break-words flex-1 min-w-0">PARTICULARITÉS - Démarche et mouvements</span>
+                                  </label>
+                                  {formData.showCatDemarcheSec && (
+                                    <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                      <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
+                                        <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.demarcheSecIA} onChange={(e) => handleChange('demarcheSecIA', e.target.checked)} />
+                                        <span className="flex-1 min-w-0 break-words">Laisser l'IA décider</span>
+                                      </label>
+                                      {!formData.demarcheSecIA && (
+                                        <>
+                                          <ChecklistGrid list={LIST_DEMARCHE} fieldData={formData.demarcheSec} fieldName="demarcheSec" onChange={handleCheckboxArray} />
+                                          {formData.demarcheSec.includes('Autre') && (
+                                            <input type="text" placeholder="Préciser..." value={formData.demarcheSecAutre} onChange={e => handleChange('demarcheSecAutre', e.target.value)} className="mt-3 w-full p-3 border border-slate-300 rounded-lg focus:border-indigo-500 outline-none"/>
+                                          )}
+                                        </>
+                                      )}
+                                    </div>
+                                  )}
+                                </div>
+
+                                {/* NOUVEAU : Particularités physiques spécifiques (Visage Sec) */}
+                                <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                  <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                    <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatVisageSec} onChange={e => handleChange('showCatVisageSec', e.target.checked)} />
+                                    <span className="font-bold text-slate-800 text-lg break-words flex-1 min-w-0">PARTICULARITÉS - Visage et expressions</span>
+                                  </label>
+                                  {formData.showCatVisageSec && (
+                                    <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                      <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
+                                        <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.visageSecIA} onChange={(e) => handleChange('visageSecIA', e.target.checked)} />
+                                        <span className="flex-1 min-w-0 break-words">Laisser l'IA décider</span>
+                                      </label>
+                                      {!formData.visageSecIA && (
+                                        <>
+                                          <ChecklistGrid list={LIST_VISAGE} fieldData={formData.visageSec} fieldName="visageSec" onChange={handleCheckboxArray} />
+                                          {formData.visageSec.includes('Autre') && (
+                                            <input type="text" placeholder="Préciser..." value={formData.visageSecAutre} onChange={e => handleChange('visageSecAutre', e.target.value)} className="mt-3 w-full p-3 border border-slate-300 rounded-lg focus:border-indigo-500 outline-none"/>
+                                          )}
+                                        </>
+                                      )}
+                                    </div>
+                                  )}
+                                </div>
+
+                                {/* NOUVEAU : Particularités physiques spécifiques (Corps Sec) */}
+                                <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                  <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                    <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatCorpSec} onChange={e => handleChange('showCatCorpSec', e.target.checked)} />
+                                    <span className="font-bold text-slate-800 text-lg break-words flex-1 min-w-0">PARTICULARITÉS - Corporelles visibles</span>
+                                  </label>
+                                  {formData.showCatCorpSec && (
+                                    <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                      <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
+                                        <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.corpSecIA} onChange={(e) => handleChange('corpSecIA', e.target.checked)} />
+                                        <span className="flex-1 min-w-0 break-words">Laisser l'IA décider</span>
+                                      </label>
+                                      {!formData.corpSecIA && (
+                                        <>
+                                          <ChecklistGrid list={LIST_CORP} fieldData={formData.corpSec} fieldName="corpSec" onChange={handleCheckboxArray} />
+                                          {formData.corpSec.includes('Autre') && (
+                                            <input type="text" placeholder="Préciser..." value={formData.corpSecAutre} onChange={e => handleChange('corpSecAutre', e.target.value)} className="mt-3 w-full p-3 border border-slate-300 rounded-lg focus:border-indigo-500 outline-none"/>
+                                          )}
+                                        </>
+                                      )}
+                                    </div>
+                                  )}
+                                </div>
+
+                                {/* NOUVEAU : Habillement Sec */}
+                                <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                  <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                    <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatHabitSec} onChange={e => handleChange('showCatHabitSec', e.target.checked)} />
+                                    <span className="font-bold text-slate-800 text-lg break-words flex-1 min-w-0">HABILLEMENT</span>
+                                  </label>
+                                  {formData.showCatHabitSec && (
+                                    <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                      <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
+                                        <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.habitSecIA} onChange={(e) => handleChange('habitSecIA', e.target.checked)} />
+                                        <span className="flex-1 min-w-0 break-words">Laisser l'IA décider</span>
+                                      </label>
+                                      {!formData.habitSecIA && (
+                                        <>
+                                          <ChecklistGridCards list={LIST_HABILLEMENT} fieldData={formData.habitSec} fieldName="habitSec" onChange={handleCheckboxArray} />
+                                          {formData.habitSec.includes('Autre') && (
+                                            <input type="text" placeholder="Préciser..." value={formData.habitSecAutre} onChange={e => handleChange('habitSecAutre', e.target.value)} className="mt-3 w-full p-3 border border-slate-300 rounded-lg focus:border-indigo-500 outline-none"/>
+                                          )}
+                                        </>
+                                      )}
+                                    </div>
+                                  )}
+                                </div>
+
+                                {/* 2. Traits Sec */}
+                                <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                  <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                    <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatTraitsSec} onChange={e => handleChange('showCatTraitsSec', e.target.checked)} />
+                                    <span className="font-bold text-slate-800 text-lg flex-1 min-w-0 break-words">Traits de caractère</span>
+                                  </label>
+                                  {formData.showCatTraitsSec && (
+                                    <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                                        <div className="p-2">
+                                          <div className="flex justify-between items-center mb-3">
+                                            <label className="flex items-center gap-3 cursor-pointer">
+                                              <input type="checkbox" className="w-5 h-5 rounded text-green-600 focus:ring-green-500 flex-shrink-0" checked={formData.activeTraitsExpSec} onChange={e => handleChange('activeTraitsExpSec', e.target.checked)} />
+                                              <h5 className="font-bold text-green-800 text-lg flex-1 min-w-0 break-words">🟢 Explicite</h5>
+                                            </label>
+                                            {formData.activeTraitsExpSec && (
+                                              <label className="flex items-center gap-2 cursor-pointer text-green-700 text-xs font-bold">
+                                                <input type="checkbox" className="w-3 h-3 rounded text-green-600 flex-shrink-0" checked={formData.traitsExpSecIA} onChange={(e) => handleChange('traitsExpSecIA', e.target.checked)} /> 
+                                                <span className="flex-1 min-w-0 break-words">IA décide</span>
+                                              </label>
+                                            )}
+                                          </div>
+                                          {formData.activeTraitsExpSec && !formData.traitsExpSecIA && (
+                                            <>
+                                              <ChecklistGrid list={LIST_TRAITS_EXP} fieldData={formData.traitsExpSec} fieldName="traitsExpSec" onChange={handleCheckboxArray} />
+                                              {formData.traitsExpSec.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.traitsExpSecAutre} onChange={e => handleChange('traitsExpSecAutre', e.target.value)} className="mt-2 w-full p-2 border rounded outline-none"/>}
+                                            </>
+                                          )}
+                                        </div>
+                                        <div className="p-2">
+                                          <div className="flex justify-between items-center mb-3">
+                                            <label className="flex items-center gap-3 cursor-pointer">
+                                              <input type="checkbox" className="w-5 h-5 rounded text-blue-600 focus:ring-blue-500 flex-shrink-0" checked={formData.activeTraitsImpSec} onChange={e => handleChange('activeTraitsImpSec', e.target.checked)} />
+                                              <h5 className="font-bold text-blue-800 text-lg flex-1 min-w-0 break-words">🔵 Implicite</h5>
+                                            </label>
+                                            {formData.activeTraitsImpSec && (
+                                              <label className="flex items-center gap-2 cursor-pointer text-blue-700 text-xs font-bold">
+                                                <input type="checkbox" className="w-3 h-3 rounded text-blue-600 flex-shrink-0" checked={formData.traitsImpSecIA} onChange={(e) => handleChange('traitsImpSecIA', e.target.checked)} /> 
+                                                <span className="flex-1 min-w-0 break-words">IA décide</span>
+                                              </label>
+                                            )}
+                                          </div>
+                                          {formData.activeTraitsImpSec && !formData.traitsImpSecIA && (
+                                            <>
+                                              <ChecklistGrid list={LIST_TRAITS_IMP} fieldData={formData.traitsImpSec} fieldName="traitsImpSec" onChange={handleCheckboxArray} />
+                                              {formData.traitsImpSec.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.traitsImpSecAutre} onChange={e => handleChange('traitsImpSecAutre', e.target.value)} className="mt-2 w-full p-2 border rounded outline-none"/>}
+                                            </>
+                                          )}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+
+                                {/* 3. Emotions Sec */}
+                                <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-sm">
+                                  <label className="flex items-center gap-3 p-4 cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                    <input type="checkbox" className="w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 flex-shrink-0" checked={formData.showCatEmotionsSec} onChange={e => handleChange('showCatEmotionsSec', e.target.checked)} />
+                                    <span className="font-bold text-slate-800 text-lg flex-1 min-w-0 break-words">Émotions</span>
+                                  </label>
+                                  {formData.showCatEmotionsSec && (
+                                    <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
+                                      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                                        <div className="p-2">
+                                          <div className="flex justify-between items-center mb-3">
+                                            <label className="flex items-center gap-3 cursor-pointer">
+                                              <input type="checkbox" className="w-5 h-5 rounded text-green-600 focus:ring-green-500 flex-shrink-0" checked={formData.activeEmotionsExpSec} onChange={e => handleChange('activeEmotionsExpSec', e.target.checked)} />
+                                              <h5 className="font-bold text-green-800 text-lg flex-1 min-w-0 break-words">🟢 Explicite</h5>
+                                            </label>
+                                            {formData.activeEmotionsExpSec && (
+                                              <label className="flex items-center gap-2 cursor-pointer text-green-700 text-xs font-bold">
+                                                <input type="checkbox" className="w-3 h-3 rounded text-green-600 flex-shrink-0" checked={formData.emotionsExpSecIA} onChange={(e) => handleChange('emotionsExpSecIA', e.target.checked)} /> 
+                                                <span className="flex-1 min-w-0 break-words">IA décide</span>
+                                              </label>
+                                            )}
+                                          </div>
+                                          {formData.activeEmotionsExpSec && !formData.emotionsExpSecIA && (
+                                            <>
+                                              <ChecklistGrid list={LIST_EMOTIONS_EXP} fieldData={formData.emotionsExpSec} fieldName="emotionsExpSec" onChange={handleCheckboxArray} />
+                                              {formData.emotionsExpSec.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.emotionsExpSecAutre} onChange={e => handleChange('emotionsExpSecAutre', e.target.value)} className="mt-2 w-full p-2 border rounded outline-none"/>}
+                                            </>
+                                          )}
+                                        </div>
+                                        <div className="p-2">
+                                          <div className="flex justify-between items-center mb-3">
+                                            <label className="flex items-center gap-3 cursor-pointer">
+                                              <input type="checkbox" className="w-5 h-5 rounded text-blue-600 focus:ring-blue-500 flex-shrink-0" checked={formData.activeEmotionsImpSec} onChange={e => handleChange('activeEmotionsImpSec', e.target.checked)} />
+                                              <h5 className="font-bold text-blue-800 text-lg flex-1 min-w-0 break-words">🔵 Implicite</h5>
+                                            </label>
+                                            {formData.activeEmotionsImpSec && (
+                                              <label className="flex items-center gap-2 cursor-pointer text-blue-700 text-xs font-bold">
+                                                <input type="checkbox" className="w-3 h-3 rounded text-blue-600 flex-shrink-0" checked={formData.emotionsImpSecIA} onChange={(e) => handleChange('emotionsImpSecIA', e.target.checked)} /> 
+                                                <span className="flex-1 min-w-0 break-words">IA décide</span>
+                                              </label>
+                                            )}
+                                          </div>
+                                          {formData.activeEmotionsImpSec && !formData.emotionsImpSecIA && (
+                                            <>
+                                              <ChecklistGrid list={LIST_EMOTIONS_IMP} fieldData={formData.emotionsImpSec} fieldName="emotionsImpSec" onChange={handleCheckboxArray} />
+                                              {formData.emotionsImpSec.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.emotionsImpSecAutre} onChange={e => handleChange('emotionsImpSecAutre', e.target.value)} className="mt-2 w-full p-2 border rounded outline-none"/>}
+                                            </>
+                                          )}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+
+                          {/* CADRE SPATIO-TEMPOREL */}
+                          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                            <h3 className="text-2xl font-black text-amber-900 mb-6 flex items-center gap-3 border-b border-amber-100 pb-4">
+                              🌍 CADRE SPATIO-TEMPOREL ET AMBIANCE
+                            </h3>
+                            
+                            <div className="space-y-8">
+                              <div>
+                                <h4 className="font-bold text-lg text-slate-800 flex justify-between items-center bg-slate-50 p-4 rounded-xl">
+                                  <span>4️⃣ Temps (époque)</span>
+                                  <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm">
+                                    <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.tempsRecitIA} onChange={(e) => handleChange('tempsRecitIA', e.target.checked)} /> 
+                                    <span className="flex-1 min-w-0 break-words">IA décide</span>
+                                  </label>
+                                </h4>
+                                {!formData.tempsRecitIA && (
+                                  <>
+                                    <ChecklistGridCards list={LIST_TEMPS} fieldData={formData.tempsRecit} fieldName="tempsRecit" onChange={handleCheckboxArray} />
+                                    {formData.tempsRecit.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.tempsRecitAutre} onChange={e => handleChange('tempsRecitAutre', e.target.value)} className="mt-3 w-full p-3 border rounded-lg outline-none"/>}
+                                  </>
+                                )}
+                              </div>
+
+                              <div>
+                                <h4 className="font-bold text-lg text-slate-800 flex justify-between items-center bg-slate-50 p-4 rounded-xl">
+                                  <span>5️⃣ Lieu</span>
+                                  <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm">
+                                    <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.lieuIA} onChange={(e) => handleChange('lieuIA', e.target.checked)} /> 
+                                    <span className="flex-1 min-w-0 break-words">IA décide</span>
+                                  </label>
+                                </h4>
+                                {!formData.lieuIA && (
+                                  <>
+                                    <ChecklistGridCards list={LIST_LIEU} fieldData={formData.lieu} fieldName="lieu" onChange={handleCheckboxArray} />
+                                    {formData.lieu.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.lieuAutre} onChange={e => handleChange('lieuAutre', e.target.value)} className="mt-3 w-full p-3 border rounded-lg outline-none"/>}
+                                  </>
+                                )}
+                              </div>
+
+                              <div>
+                                <h4 className="font-bold text-lg text-slate-800 flex justify-between items-center bg-slate-50 p-4 rounded-xl">
+                                  <span>6️⃣ Ambiance du récit</span>
+                                  <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm">
+                                    <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.ambianceIA} onChange={(e) => handleChange('ambianceIA', e.target.checked)} /> 
+                                    <span className="flex-1 min-w-0 break-words">IA décide</span>
+                                  </label>
+                                </h4>
+                                {!formData.ambianceIA && (
+                                  <>
+                                    <ChecklistGridCards list={LIST_AMBIANCE} fieldData={formData.ambiance} fieldName="ambiance" onChange={handleCheckboxArray} />
+                                    {formData.ambiance.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.ambianceAutre} onChange={e => handleChange('ambianceAutre', e.target.value)} className="mt-3 w-full p-3 border rounded-lg outline-none"/>}
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      )}
+
+                      {activeTab === 7 && (
                         <div className="animate-fade-in space-y-8">
                           <div className="bg-blue-50/80 p-8 rounded-3xl border border-blue-200 shadow-sm">
                             <h3 className="text-xl font-bold text-blue-900 mb-4 flex items-center gap-3">
@@ -923,7 +1867,7 @@
                         </div>
                       )}
 
-                      {activeTab === 7 && (
+                      {activeTab === 8 && (
                         <div className="animate-fade-in space-y-10">
                           <CheckboxCard 
                             label="Imposer des temps de verbes spécifiques (Respect absolu exigé)" 
@@ -973,11 +1917,9 @@
                                   {['Présent de l\'indicatif', 'Futur proche', 'Passé composé', 'Futur simple', 'Imparfait', 'Conditionnel présent', 'Impératif présent', 'Plus-que-parfait', 'Subjonctif présent'].map(t => {
                                     const isChecked = formData.tempsChoisis.includes(t);
                                     return (
-                                      <label key={t} className={`flex items-center gap-4 p-4 cursor-pointer rounded-xl border-2 transition-all font-bold ${isChecked ? 'bg-indigo-600 border-indigo-600 text-white shadow-md' : 'bg-white border-slate-200 text-slate-700 hover:border-indigo-400'}`}>
-                                        <input type="checkbox" className="w-6 h-6 rounded text-indigo-900 bg-white border-none focus:ring-0 cursor-pointer" 
-                                               checked={isChecked}
-                                               onChange={(e) => handleCheckboxArray('tempsChoisis', t, e.target.checked)} />
-                                        <span>{t}</span>
+                                      <label key={t} className={`flex items-center gap-4 p-4 cursor-pointer rounded-xl border-2 transition-all font-bold min-h-[4rem] ${isChecked ? 'bg-indigo-600 border-indigo-600 text-white shadow-md' : 'bg-white border-slate-200 text-slate-700 hover:border-indigo-400'}`}>
+                                        <input type="checkbox" className="hidden" checked={isChecked} onChange={(e) => handleCheckboxArray('tempsChoisis', t, e.target.checked)} />
+                                        <span className="break-words leading-tight flex-1">{t}</span>
                                       </label>
                                     );
                                   })}
@@ -988,7 +1930,7 @@
                         </div>
                       )}
 
-                      {activeTab === 8 && (
+                      {activeTab === 9 && (
                         <div className="animate-fade-in space-y-8">
                           
                           <div className="flex gap-4 p-6 bg-slate-50 border border-slate-200 rounded-3xl flex-wrap">
@@ -1027,7 +1969,7 @@
                                         <span className="text-emerald-500 font-mono text-xl shrink-0">{index + 1}.</span> 
                                         <span>{q.label}</span>
                                       </div>
-                                      <div className="text-sm text-slate-500 font-medium line-clamp-2">{q.desc}</div>
+                                      <div className="text-sm text-slate-500 font-medium break-words mt-1">{q.desc}</div>
                                     </div>
                                     <div className="flex items-center gap-3 shrink-0 bg-slate-50 p-2 rounded-xl border border-slate-100">
                                       <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Qté.</label>
@@ -1056,12 +1998,12 @@
                                   {FORMATS_QUESTIONS.map(format => {
                                     const isChecked = formData.qTypes && formData.qTypes.includes(format.id);
                                     return (
-                                      <label key={format.id} className={`flex items-start gap-4 p-5 cursor-pointer rounded-2xl border-2 transition-all duration-300 ${isChecked ? 'bg-indigo-50 border-indigo-500 shadow-md -translate-y-1' : 'bg-white border-slate-200 hover:border-indigo-300 hover:shadow-sm hover:-translate-y-1'}`}>
+                                      <label key={format.id} className={`flex items-start gap-4 p-5 cursor-pointer rounded-2xl border-2 transition-all duration-300 min-h-[5rem] ${isChecked ? 'bg-indigo-50 border-indigo-500 shadow-md -translate-y-1' : 'bg-white border-slate-200 hover:border-indigo-300 hover:shadow-sm hover:-translate-y-1'}`}>
                                         <input type="checkbox" className="hidden" checked={isChecked} onChange={(e) => handleCheckboxArray('qTypes', format.id, e.target.checked)} />
                                         <div className={`mt-1 w-6 h-6 flex-shrink-0 rounded border-2 flex items-center justify-center transition-colors ${isChecked ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300'}`}>
                                           {isChecked && <Check className="w-4 h-4 text-white" strokeWidth={3} />}
                                         </div>
-                                        <div className="flex-1">
+                                        <div className="flex-1 min-w-0 break-words">
                                           <span className={`font-bold block text-lg transition-colors ${isChecked ? 'text-indigo-900' : 'text-slate-800'}`}>{format.label}</span>
                                           <span className="text-sm text-slate-500 mt-2 block leading-relaxed">{format.desc}</span>
                                         </div>
@@ -1075,7 +2017,7 @@
                         </div>
                       )}
 
-                      {activeTab === 9 && (
+                      {activeTab === 10 && (
                         <div className="animate-fade-in space-y-8">
                           <div className="bg-indigo-50 p-6 rounded-3xl border border-indigo-100 mb-6">
                             <h3 className="text-xl font-bold text-indigo-900 mb-3">DESCRIPTION D’IMAGES (TRÈS DÉTAILLÉE)</h3>
@@ -1101,7 +2043,7 @@
                         </div>
                       )}
 
-                      {activeTab === 10 && (
+                      {activeTab === 11 && (
                         <div className="animate-fade-in space-y-6">
                           <div className="grid grid-cols-1 gap-4">
                             <RadioCard label="1. Format HTML (Mode Édition) - AVEC fond coloré" description="Idéal pour un copier/coller direct avec une mise en page spectaculaire." value="HTML_Color" current={formData.format} onChange={(v) => handleChange('format', v)} />
@@ -1149,6 +2091,7 @@
                   <div className="flex-none p-6 md:px-12 md:py-8 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] flex justify-between items-center z-20">
                     
                     <div className="flex items-center gap-3 md:gap-4">
+                      {/* Nouveau bouton "Effacer tout" */}
                       <button 
                         onClick={handleReset}
                         className="flex items-center gap-2 px-4 md:px-5 py-3 md:py-4 rounded-2xl font-bold transition-all text-base md:text-lg text-rose-600 bg-rose-50 hover:bg-rose-100 hover:text-rose-700 hover:-translate-y-1"
@@ -1160,7 +2103,9 @@
 
                       <button 
                         onClick={() => {
-                          setActiveTab(prev => Math.max(1, prev - 1));
+                          let prevId = activeTab - 1;
+                          if (prevId === 6 && formData.typeTexte !== 'Texte narratif') prevId = 5;
+                          setActiveTab(Math.max(1, prevId));
                           if (scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0;
                         }}
                         disabled={activeTab === 1}
@@ -1170,10 +2115,12 @@
                       </button>
                     </div>
                     
-                    {activeTab < 10 ? (
+                    {activeTab < 11 ? (
                       <button 
                         onClick={() => {
-                          setActiveTab(prev => Math.min(10, prev + 1));
+                          let nextId = activeTab + 1;
+                          if (nextId === 6 && formData.typeTexte !== 'Texte narratif') nextId = 7;
+                          setActiveTab(Math.min(11, nextId));
                           if (scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0;
                         }}
                         className="flex items-center gap-3 px-6 md:px-10 py-3 md:py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl font-black transition-all text-base md:text-lg shadow-xl shadow-indigo-600/20 hover:translate-x-1 hover:shadow-indigo-600/40"
@@ -1192,6 +2139,13 @@
 
                 </div>
               </div>
+              
+              <style dangerouslySetInnerHTML={{__html: `
+                .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+                .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+                .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 20px; border: 3px solid transparent; background-clip: content-box; }
+                .custom-scrollbar:hover::-webkit-scrollbar-thumb { background-color: #94a3b8; }
+              `}} />
             </div>
           );
         }
