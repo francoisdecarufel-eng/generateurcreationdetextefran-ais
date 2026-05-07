@@ -443,6 +443,13 @@
             p += `Il doit impérativement y avoir des paragraphes structurés selon le type de texte et le schéma sélectionné.\n`;
             p += `Utilise ta logique d'IA pour créer des paragraphes parfaits et logiques.\n`;
 
+            if (formData.ideePrincipale && formData.ideePrincipale.trim()) {
+              p += `\n====================================================\n`;
+              p += `▶ IDÉE PRINCIPALE DU TEXTE\n`;
+              p += `====================================================\n`;
+              p += `Le texte doit obligatoirement se baser sur cette idée principale :\n"${formData.ideePrincipale.trim()}"\n`;
+            }
+
             if (formData.typeTexte === 'Texte narratif') {
               p += `\n⚠️ DÉBUT DU TEXTE NARRATIF :\n`;
               p += `Puisque c'est un texte narratif, l'histoire générée doit impérativement avoir un début (situation de départ) comprenant :\n`;
@@ -450,13 +457,6 @@
               p += `- Des informations sur le temps\n`;
               p += `- La présentation des personnages\n`;
               p += `- Quelques actions pour amorcer le récit.\n`;
-
-              if (formData.ideePrincipale && formData.ideePrincipale.trim()) {
-                p += `\n====================================================\n`;
-                p += `▶ IDÉE PRINCIPALE DU TEXTE\n`;
-                p += `====================================================\n`;
-                p += `L'histoire doit obligatoirement se baser sur cette idée principale :\n"${formData.ideePrincipale.trim()}"\n`;
-              }
 
               p += `\n🔹 MÉTA-CONSIGNE – OBJECTIF DU PERSONNAGE (INTENTION NARRATIVE)\n`;
               p += `Le récit doit toujours être construit autour d’un objectif clair du personnage principal.\n`;
@@ -1201,6 +1201,22 @@
                       {activeTab === 5 && (
                         <div className="animate-fade-in space-y-12">
                           
+                          {/* IDÉE PRINCIPALE DÉPLACÉE ICI */}
+                          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                            <h3 className="text-2xl font-black text-indigo-900 mb-6 flex items-center gap-3 border-b border-indigo-100 pb-4">
+                              💡 IDÉE PRINCIPALE DU TEXTE
+                            </h3>
+                            <p className="text-slate-500 mb-6">Décrivez brièvement le cœur de votre histoire (les événements de base).</p>
+                            <div className="animate-fade-in relative z-10">
+                              <textarea 
+                                placeholder="Exemple : Chaque matin, un garçon prend l’autobus pour aller à l’école, où il est victime de moqueries et de harcèlement."
+                                value={formData.ideePrincipale}
+                                onChange={(e) => handleChange('ideePrincipale', e.target.value)}
+                                className="w-full p-4 border-2 border-indigo-200 rounded-xl focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 text-lg outline-none min-h-[120px] resize-y custom-scrollbar"
+                              />
+                            </div>
+                          </div>
+
                           <div>
                             <h3 className="text-2xl font-black text-slate-800 mb-8 border-b border-slate-200 pb-4">
                               Partie 1 : THÈMES (Choix multiples)
@@ -1264,22 +1280,6 @@
                       {/* ==== ONGLET 6: AMBIANCE ET PERSONNAGES ==== */}
                       {activeTab === 6 && formData.typeTexte === 'Texte narratif' && (
                         <div className="animate-fade-in space-y-12">
-                          
-                          {/* IDÉE PRINCIPALE */}
-                          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
-                            <h3 className="text-2xl font-black text-indigo-900 mb-6 flex items-center gap-3 border-b border-indigo-100 pb-4">
-                              💡 IDÉE PRINCIPALE DU TEXTE
-                            </h3>
-                            <p className="text-slate-500 mb-6">Décrivez brièvement le cœur de votre histoire (les événements de base).</p>
-                            <div className="animate-fade-in relative z-10">
-                              <textarea 
-                                placeholder="Exemple : Chaque matin, un garçon prend l’autobus pour aller à l’école, où il est victime de moqueries et de harcèlement."
-                                value={formData.ideePrincipale}
-                                onChange={(e) => handleChange('ideePrincipale', e.target.value)}
-                                className="w-full p-4 border-2 border-indigo-200 rounded-xl focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 text-lg outline-none min-h-[120px] resize-y custom-scrollbar"
-                              />
-                            </div>
-                          </div>
 
                           {/* PERSONNAGE PRINCIPAL */}
                           <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
@@ -1682,7 +1682,7 @@
                                   {formData.showCatTraitsSec && (
                                     <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
                                       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-                                        <div className="p-2">
+                                        <div className="border border-green-200 p-5 rounded-2xl bg-white">
                                           <div className="flex justify-between items-center mb-3">
                                             <label className="flex items-center gap-3 cursor-pointer">
                                               <input type="checkbox" className="w-5 h-5 rounded text-green-600 focus:ring-green-500 flex-shrink-0" checked={formData.activeTraitsExpSec} onChange={e => handleChange('activeTraitsExpSec', e.target.checked)} />
@@ -1702,7 +1702,7 @@
                                             </>
                                           )}
                                         </div>
-                                        <div className="p-2">
+                                        <div className="border border-blue-200 p-5 rounded-2xl bg-white">
                                           <div className="flex justify-between items-center mb-3">
                                             <label className="flex items-center gap-3 cursor-pointer">
                                               <input type="checkbox" className="w-5 h-5 rounded text-blue-600 focus:ring-blue-500 flex-shrink-0" checked={formData.activeTraitsImpSec} onChange={e => handleChange('activeTraitsImpSec', e.target.checked)} />
@@ -1736,7 +1736,7 @@
                                   {formData.showCatEmotionsSec && (
                                     <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
                                       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-                                        <div className="p-2">
+                                        <div className="border border-green-200 p-5 rounded-2xl bg-white">
                                           <div className="flex justify-between items-center mb-3">
                                             <label className="flex items-center gap-3 cursor-pointer">
                                               <input type="checkbox" className="w-5 h-5 rounded text-green-600 focus:ring-green-500 flex-shrink-0" checked={formData.activeEmotionsExpSec} onChange={e => handleChange('activeEmotionsExpSec', e.target.checked)} />
@@ -1756,7 +1756,7 @@
                                             </>
                                           )}
                                         </div>
-                                        <div className="p-2">
+                                        <div className="border border-blue-200 p-5 rounded-2xl bg-white">
                                           <div className="flex justify-between items-center mb-3">
                                             <label className="flex items-center gap-3 cursor-pointer">
                                               <input type="checkbox" className="w-5 h-5 rounded text-blue-600 focus:ring-blue-500 flex-shrink-0" checked={formData.activeEmotionsImpSec} onChange={e => handleChange('activeEmotionsImpSec', e.target.checked)} />
