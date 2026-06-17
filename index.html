@@ -8,11 +8,11 @@
     <!-- Tailwind CSS pour les styles -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- React & ReactDOM via CDN -->
+    <!-- React & ReactDOM via CDN (UMD) -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     
-    <!-- Babel pour compiler le JSX à la volée dans le navigateur -->
+    <!-- Babel Standalone pour compiler le JSX à la volée dans le navigateur -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <style>
@@ -31,7 +31,17 @@
 <body class="bg-gradient-to-br from-slate-100 via-white to-indigo-50 min-h-screen">
     <div id="root"></div>
 
-    <script type="text/babel">
+    <!-- Configuration de Babel Standalone avec votre correctif -->
+    <script>
+      Babel.registerPreset('react-classic', {
+        presets: [
+          [Babel.availablePresets['react'], { runtime: 'classic' }]
+        ]
+      });
+    </script>
+
+    <!-- Script de l'application React avec le preset classique appliqué -->
+    <script type="text/babel" data-presets="env, react-classic">
         const { useState, useEffect, useRef } = React;
 
         // Définition des icônes SVG
@@ -70,7 +80,7 @@
           { id: 1, label: "Palier 1", description: "L’élève comprend des textes courants ou littéraires, illustrés et dont le sujet est familier. Ces textes à structure prévisible sont constitués de mots ou de phrases simples liés à son environnement immédiat. Il reconnaît globalement certains mots appris en classe et lit des mots composés de syllabes simples. Il associe des mots à images et réagit de façon non verbale au texte.\n* Avec l’aide de l’enseignant, l’élève utilise des stratégies enseignées." },
           { id: 2, label: "Palier 2", description: "L’élève comprend des textes courants ou littéraires, illustrés et dont le sujet est familier. Ces textes à structure généralement prévisible, sont constitués de quelques phrases simples et d’un vocabulaire de base. Il reconnaît la plupart des mots appris en classe et lit des mots composés de syllabes simples et parfois complexes. Il repère des informations explicites et exprime sa réaction au texte en faisant quelques liens avec ses connaissances et ses expériences.\n* Avec l’aide de l’enseignant, l’élève utilise des stratégies enseignées et les ressources suggérées." },
           { id: 3, label: "Palier 3", description: "L’élève comprend des textes courants ou littéraires, illustrés et dont le sujet est généralement familier. Ces textes sont constitués de quelques paragraphes comportant des phrases simples et un vocabulaire courant. Il lit par groupe de mots, avec ou sans hésitation. Il identifie le sujet traité et se sert du contexte pour comprendre le sens de nouveaux mots. Il sélectionne des informations explicites et relève parfois l’idée principale du texte. Il effectue des liens avec ses connaissances et ses expériences et se sert de faits ou d’exemples du texte pour appuyer sa réaction.\n* L’élève utilise des stratégies suggérées. Avec l’aide de l’enseignant, il répond à des questions sur sa démarche de lecture." },
-          { id: 4, label: "Palier 4", description: "L’élève comprend des textes courants ou littéraires dont le sujet est plus ou moins familier. Ces textes sont constitués de plusieurs paragraphes comportant des phrases complexes et un vocabulaire spécifique des disciplines scolaires. Il dégage l’idée principale ainsi que certaines informations essentielles et se sert d’indices linguistiques pour déduire le sens du texte. Il regroupe des informations explicites et relève les principaux éléments qui illustrent la progression dans le texte. Il exprime sa réaction au texte en faisant des liens avec différents textes lus, vus ou entendus.\n* L’élève utilise des stratégies et différentes ressources. Avec l’aide de l’enseignant, il décrit sa démarche de lecture et identifie ses forces et ses faiblesses." },
+          { id: 4, label: "Palier 4", description: "L’élève comprend des textes courants ou littéraires dont le sujet est plus ou moins familier. Ces textes sont constitués de plusieurs paragraphes comportant des phrases complexes et un vocabulaire spécifique des disciplines scolaires. Il dégage l’idée principale ainsi que certaines informations essentielles et se sert d’indices linguistiques pour déduire le sens du texte. Il regroupe des informations explicites et relève les principaux éléments qui illustrent la progression dans le texte. Il exprime sa réaction au texte en faisant des liens avec différents textes lus, vus ou ontendus.\n* L’élève utilise des stratégies et différentes ressources. Avec l’aide de l’enseignant, il décrit sa démarche de lecture et identifie ses forces et ses faiblesses." },
           { id: 5, label: "Palier 5", description: "L’élève comprend des textes courants ou littéraires dont le sujet est peu ou pas familier. Ces textes sont constitués de plusieurs paragraphes comportant des phrases variées et un vocabulaire étendu. Il distingue l’idée principale des idées secondaires et peut résumer le texte en présentant les idées de façon logique ou chronologique. Il se sert de ses connaissances antérieures et du contenu du texte pour dégager le sens de certaines informations implicites." }
         ];
 
@@ -691,7 +701,7 @@
             }
 
             if (formData.motsImposes.trim()) {
-              p += `\n- Vocabulaire imposé :\n  Intègre impérativement ces mots dans le texte : ${formData.motsImposes}\n`;
+              p += `\n- Vocabulaire imposed :\n  Intègre impérativement ces mots dans le texte : ${formData.motsImposes}\n`;
               p += `  Consigne stricte : Insérer les mots fournis naturellement en maintenant une cohérence parfaite avec l'idée du texte.\n`;
             }
 
@@ -890,10 +900,10 @@
           };
 
           const copyPrompt = () => {
-            const textArea = document.createElement("textarea");
-            textArea.value = generatedPrompt;
-            document.body.appendChild(textArea);
-            textArea.select();
+            const windowTextArea = document.createElement("textarea");
+            windowTextArea.value = generatedPrompt;
+            document.body.appendChild(windowTextArea);
+            windowTextArea.select();
             try {
               document.execCommand('copy');
               setCopied(true);
@@ -901,7 +911,7 @@
             } catch (err) {
               console.error('Échec de la copie du texte', err);
             }
-            document.body.removeChild(textArea);
+            document.body.removeChild(windowTextArea);
           };
 
           return (
@@ -953,11 +963,7 @@
                       <div className="mb-10 animate-fade-in-down">
                         <h2 className="text-4xl font-black text-slate-800 flex items-center gap-4 tracking-tight">
                           <span className="p-3 bg-indigo-100 text-indigo-700 rounded-2xl">
-                            {(() => {
-                              const activeTabObj = TABS.find(t => t.id === activeTab);
-                              const ActiveIcon = activeTabObj ? activeTabObj.icon : BookOpen;
-                              return <ActiveIcon className="w-8 h-8" />;
-                            })()}
+                            {React.createElement(TABS.find(t => t.id === activeTab)?.icon || BookOpen, { className: "w-8 h-8" })}
                           </span>
                           {TABS.find(t => t.id === activeTab)?.title.split('. ')[1]}
                         </h2>
@@ -1206,10 +1212,16 @@
                             <h3 className="text-2xl font-black text-indigo-900 mb-6 flex items-center gap-3 border-b border-indigo-100 pb-4">
                               💡 IDÉE PRINCIPALE DU TEXTE
                             </h3>
-                            <p className="text-slate-500 mb-6">Décrivez brièvement le cœur de votre histoire (les événements de base).</p>
+                            <p className="text-slate-500 mb-6">
+                              {(!formData.typeTexte || formData.typeTexte === 'Texte narratif') 
+                                ? "Décrivez brièvement le cœur de votre histoire (les événements de base)." 
+                                : "Décrivez brièvement le cœur de votre texte (thèmes abordés, Sous-thèmes abordés, ...)."}
+                            </p>
                             <div className="animate-fade-in relative z-10">
                               <textarea 
-                                placeholder="Exemple : Chaque matin, un garçon prend l’autobus pour aller à l’école, où il est victime de moqueries et de harcèlement."
+                                placeholder={(!formData.typeTexte || formData.typeTexte === 'Texte narratif') 
+                                  ? "Exemple : Chaque matin, un garçon prend l’autobus pour aller à l’école, où il est victime de moqueries et de harcèlement." 
+                                  : "Exemple : L’idée principale est de présenter la richesse et la diversité des animaux d’Afrique ainsi que leur adaptation à des milieux variés comme la savane, la jungle ou le désert. L’auteur cherche à faire découvrir leurs modes de vie, leurs comportements et l’importance de protéger ces espèces. Le texte met aussi en évidence les défis liés à la survie des animaux face aux changements environnementaux et aux activités humaines."}
                                 value={formData.ideePrincipale}
                                 onChange={(e) => handleChange('ideePrincipale', e.target.value)}
                                 className="w-full p-4 border-2 border-indigo-200 rounded-xl focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 text-lg outline-none min-h-[120px] resize-y custom-scrollbar"
@@ -1457,7 +1469,7 @@
                                           </label>
                                           {formData.activeTraitsImpMain && (
                                             <label className="flex items-center gap-2 cursor-pointer text-blue-700 text-xs font-bold">
-                                              <input type="checkbox" className="w-3 h-3 rounded text-blue-600 flex-shrink-0" checked={formData.traitsImpMainIA} onChange={(e) => handleChange('traitsImpMainIA', e.target.checked)} /> 
+                                              <input type="checkbox" className="w-3 h-3 rounded text-green-600 flex-shrink-0" checked={formData.traitsImpMainIA} onChange={(e) => handleChange('traitsImpMainIA', e.target.checked)} /> 
                                               <span className="flex-1 min-w-0 break-words">IA décide</span>
                                             </label>
                                           )}
@@ -1511,7 +1523,7 @@
                                           </label>
                                           {formData.activeEmotionsImpMain && (
                                             <label className="flex items-center gap-2 cursor-pointer text-blue-700 text-xs font-bold">
-                                              <input type="checkbox" className="w-3 h-3 rounded text-blue-600 flex-shrink-0" checked={formData.emotionsImpMainIA} onChange={(e) => handleChange('emotionsImpMainIA', e.target.checked)} /> 
+                                              <input type="checkbox" className="w-3 h-3 rounded text-green-600 flex-shrink-0" checked={formData.emotionsImpMainIA} onChange={(e) => handleChange('emotionsImpMainIA', e.target.checked)} /> 
                                               <span className="flex-1 min-w-0 break-words">IA décide</span>
                                             </label>
                                           )}
@@ -1587,7 +1599,7 @@
                                     <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
                                       <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
                                         <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.demarcheSecIA} onChange={(e) => handleChange('demarcheSecIA', e.target.checked)} />
-                                        <span className="flex-1 min-w-0 break-words">Laisser l'IA décider</span>
+                                        <span className="flex-1 min-w-0 break-words">Laisser l'IA décide</span>
                                       </label>
                                       {!formData.demarcheSecIA && (
                                         <>
@@ -1611,7 +1623,7 @@
                                     <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
                                       <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
                                         <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.visageSecIA} onChange={(e) => handleChange('visageSecIA', e.target.checked)} />
-                                        <span className="flex-1 min-w-0 break-words">Laisser l'IA décider</span>
+                                        <span className="flex-1 min-w-0 break-words">Laisser l'IA décide</span>
                                       </label>
                                       {!formData.visageSecIA && (
                                         <>
@@ -1635,7 +1647,7 @@
                                     <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
                                       <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
                                         <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.corpSecIA} onChange={(e) => handleChange('corpSecIA', e.target.checked)} />
-                                        <span className="flex-1 min-w-0 break-words">Laisser l'IA décider</span>
+                                        <span className="flex-1 min-w-0 break-words">Laisser l'IA décide</span>
                                       </label>
                                       {!formData.corpSecIA && (
                                         <>
@@ -1659,7 +1671,7 @@
                                     <div className="p-5 border-t border-slate-200 animate-fade-in bg-slate-50/50">
                                       <label className="flex items-center gap-2 cursor-pointer text-indigo-600 text-sm font-bold mb-3">
                                         <input type="checkbox" className="w-4 h-4 rounded text-indigo-600 flex-shrink-0" checked={formData.habitSecIA} onChange={(e) => handleChange('habitSecIA', e.target.checked)} />
-                                        <span className="flex-1 min-w-0 break-words">Laisser l'IA décider</span>
+                                        <span className="flex-1 min-w-0 break-words">Laisser l'IA décide</span>
                                       </label>
                                       {!formData.habitSecIA && (
                                         <>
@@ -1772,7 +1784,7 @@
                                           {formData.activeEmotionsImpSec && !formData.emotionsImpSecIA && (
                                             <>
                                               <ChecklistGrid list={LIST_EMOTIONS_IMP} fieldData={formData.emotionsImpSec} fieldName="emotionsImpSec" onChange={handleCheckboxArray} />
-                                              {formData.emotionsImpSec.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.emotionsImpSecAutre} onChange={e => handleChange('emotionsImpSecAutre', e.target.value)} className="mt-2 w-full p-2 border rounded outline-none"/>}
+                                              {formData.emotionsImpSec.includes('Autre') && <input type="text" placeholder="Préciser..." value={formData.emotionsImpSecAutre} onChange={e => handleChange('emotionsImpSecAutre', e.target.value)} className="mt-2 w-full p-2 border rounded-none outline-none"/>}
                                             </>
                                           )}
                                         </div>
@@ -2119,7 +2131,7 @@
                       <button 
                         onClick={() => {
                           let nextId = activeTab + 1;
-                          if (nextId === 6 && formData.typeTexte !== 'Texte narratif') nextId = 7;
+                          if (nextId === 5 && formData.typeTexte !== 'Texte narratif') nextId = 7;
                           setActiveTab(Math.min(11, nextId));
                           if (scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0;
                         }}
